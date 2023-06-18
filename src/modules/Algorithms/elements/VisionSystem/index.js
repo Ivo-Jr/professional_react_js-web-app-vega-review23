@@ -13,7 +13,7 @@ import { HelmetComponent } from "../../../../components/Helmet";
 // import Mira from "./mira";
 // import ObjectDetection from "../ObjectDetection";
 import Login from '../../../../components/Login/Login.js'
-
+import Console from './console';
 import * as S from "./styles";
 // import PlaygroundSpeedDial from "../../components/SpeedDial";
 
@@ -23,7 +23,7 @@ function VisionSystem() {
   const [webcamImage, setWebcamImage] = useState(null);
   const [objectDetectionActivated, setObjectDetectionActivated] = useState(false);
   const [predictions, setPredictions] = useState([]);
-
+  const [consoleData, setConsoleData] = useState([]);
   const [savedImage, setSavedImage] = useState(null);
   const [diffImage, setDiffImage] = useState(null);
   const [diffPercentage, setDiffPercentage] = useState(null);
@@ -104,6 +104,11 @@ function VisionSystem() {
     }
   }, [savedImage, webcamImage, localStorageImage, useLocalStorage, clearLocalStorage]);
 
+
+
+
+
+
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setWebcamImage(imageSrc);
@@ -111,30 +116,16 @@ function VisionSystem() {
       FileSaver.saveAs(imageSrc, `${directory}/captured-image.png`);
     }
     localStorage.setItem("webcamImage", imageSrc);
-    compareImages();
-  }, [webcamRef, directory, compareImages]);
+  }, [webcamRef, directory]);
 
-  const setImageClass = useCallback(
-    (diffPercentage, toleranceLevel) => {
-      if (diffPercentage <= parseInt(toleranceLevel)) {
-        setImageClassName("image-match");
-        const modalText = diffPercentage && diffPercentage >= 95 ? "Aprovado" : "Reprovado";
-        setModal(true);
-      } else {
-        setImageClassName("image-mismatch");
-        setModal(true);
-      }
-    },
-    []
-  );
 
   const setImageState = useCallback((img1, img2, canvas1, canvas2, ctx1, ctx2, diff, diffCanvas) => {
     ctx1.drawImage(img1, 0, 0);
     ctx2.drawImage(img2, 0, 0);
-
+  
     const img1Data = ctx1.getImageData(0, 0, img1.width, img1.height);
     const img2Data = ctx2.getImageData(0, 0, img2.width, img2.height);
-
+  
     const diffPixels = pixelmatch(
       img1Data.data,
       img2Data.data,
@@ -143,18 +134,53 @@ function VisionSystem() {
       img1.height,
       { threshold: 0.1 }
     );
-
+  
     setDiffPercentage((diffPixels / (img1.width * img1.height)) * 100);
-
+  
     const diffPercentageAdjusted = (diffPixels / (img1.width * img1.height)) * 100;
     const [minRange, maxRange] = approvedRange;
     const toleranceLevel = 100 - ((diffPercentageAdjusted / maxRange) * 100);
     setImageClass(diffPercentageAdjusted, toleranceLevel);
-
+  
     const diffCtx = diffCanvas.getContext("2d");
     diffCtx.putImageData(diff, 0, 0);
     setDiffImage(diffCanvas.toDataURL());
-  }, [approvedRange, setImageClass, setDiffImage, setDiffPercentage]);
+  }, [approvedRange, setDiffImage, setDiffPercentage]);
+
+  const setImageClass = useCallback(
+    (diffPercentage, toleranceLevel) => {
+      let currentDateTime = new Date();
+      let currentDate = currentDateTime.toLocaleDateString();
+      let currentTime = currentDateTime.toLocaleTimeString();
+  
+      let message = "";
+  
+      if (diffPercentage <= parseInt(toleranceLevel)) {
+        setImageClassName("image-match");
+        message = "Aprovado";
+        setModal(true);
+      } else {
+        setImageClassName("image-mismatch");
+        setModal(true);
+        message = "Reprovado";
+      }
+  
+      setConsoleData((prevState) => {
+        const newConsoleData = [
+          ...prevState,
+          { message, date: currentDate, time: currentTime },
+        ];
+        return newConsoleData.length > 10 ? newConsoleData.slice(1) : newConsoleData;
+      });
+    },
+    [setImageState]
+  );
+  
+  
+
+
+
+  
 
   const videoConstraints = {
     width: window.innerWidth,
@@ -270,30 +296,9 @@ function VisionSystem() {
                 </S.RealTimeImage>
 
                 <S.ConsoleWeb>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat tenetur excepturi tempora cum eaque beatae perspiciatis nisi distinctio doloribus autem earum sunt, officiis architecto illum adipisci nihil. Mollitia, ipsum.
-                  </p>
-                </S.ConsoleWeb>
+  <Console consoleData={consoleData} />
+</S.ConsoleWeb>
+
               </S.WrapperMain>
 
 
