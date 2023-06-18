@@ -1,0 +1,52 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import * as S from './styles';
+import logo from '../../assets/logo.svg';
+import insta from '../../assets/insta.png';
+import youtube from '../../assets/youtube.png';
+// import link from '../../assets/link.png';
+import whatsapp from '../../assets/whatsapp.png';
+// import vixem from '../../assets/vixembeta.png';
+import ListAlgoritmos from '../../assets/camera-de-video2.png';
+// import ChatGPT from '../ChatGPT/ChatGPT.js';
+
+function Footer() {
+    return (
+        <S.Container>
+            <S.LeftSide>
+                <a href="https://www.instagram.com/vega.robotics/" target="_blank" rel="noreferrer" >
+                <img src={insta} className="insta" alt="insta"/>
+                </a>
+
+                <a href="https://www.youtube.com/channel/UCXrrWajAUavg6n2vghDR5AQ" target="_blank" rel="noreferrer" >
+                <img src={youtube} className="youtube" alt="youtube"/>
+                </a>
+
+                {/* <a href="https://www.linkedin.com/company/vega-robotics-tech/?viewAsMember=true" target="_blank" rel="noreferrer" >
+                <img src={link} className="link" alt="link" />
+                </a> */}
+
+                <a href="https://api.whatsapp.com/send/?phone=%2B551151998949&text&type=phone_number&app_absent=0" target="_blank" rel="noreferrer" >
+                <img src={whatsapp} className="link" alt="link" />
+                </a>
+
+                <Link to="/algoritmos">
+                 <img src={ListAlgoritmos} alt="VegaRobotics" id="logo"/>
+                </Link>
+            
+            </S.LeftSide>
+            <S.Center>
+                <img src={logo} className="App-logo" alt="logo"/>
+                <footer>Powered ReactJS</footer>
+            </S.Center>
+            <S.RightSide>
+                <span>® Vega Robotics. All rights reserved.</span> 
+                <br></br>
+                <br></br>
+                <a href="mailto:contato@vegarobotics.com.br">contato@vegarobotics.com.br</a>
+            </S.RightSide>
+            {/* <ChatGPT /> */}
+        </S.Container>
+    )
+}
+export default Footer;
