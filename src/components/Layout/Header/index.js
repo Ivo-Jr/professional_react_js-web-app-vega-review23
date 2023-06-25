@@ -88,7 +88,7 @@ function Header() {
           <a href="/">Home</a>
           <Link to="/technology">Techonology</Link>
           <Link to="/engineering">Engineering</Link>
-          <Link to="/">Robotics</Link>
+          {/* <Link to="/">Robotics</Link> */}
           <Link to="/algorithms">Algorithms</Link>
           <Link to="/articles">Articles</Link>
           <Link to="/budget">Contact</Link>

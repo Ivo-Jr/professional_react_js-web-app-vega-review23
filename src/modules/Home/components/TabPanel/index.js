@@ -45,19 +45,19 @@ export const TabPanel = () => {
           occupation: "Remote Developer",
           color: "#4863f7",
           url: "/technology"
-        },
-        {
-          title: "Robotica",
-          subtitle: "Serviços de Robotica",
-          description: "A funcionaidade adequada para sua empresa, industria ou négocio está aqui! Há um clique de distância, aperte no botão abaixo para entender!",
-          ctaButtonText: "Conhecer a Robotica",
-          testimony: '"A VegaRobotics trás soluçòes simplesmente incríveis, muito prático, além do pronto atendimento, transparencia e cordialidade na execução dos projetos."',
-          avatar: avatarImage,
-          name: "Luiza D.",
-          occupation: "Remote Developer",
-          color: "#42d3ff",
-          url: "/"
         }
+        // {
+        //   title: "Robotica",
+        //   subtitle: "Serviços de Robotica",
+        //   description: "A funcionaidade adequada para sua empresa, industria ou négocio está aqui! Há um clique de distância, aperte no botão abaixo para entender!",
+        //   ctaButtonText: "Conhecer a Robotica",
+        //   testimony: '"A VegaRobotics trás soluçòes simplesmente incríveis, muito prático, além do pronto atendimento, transparencia e cordialidade na execução dos projetos."',
+        //   avatar: avatarImage,
+        //   name: "Luiza D.",
+        //   occupation: "Remote Developer",
+        //   color: "#42d3ff",
+        //   url: "/"
+        // }
       ]
     )
   }, []);
@@ -72,7 +72,7 @@ export const TabPanel = () => {
           <Tab activetab={activeTab} color={tabView[activeTab].color}>
             <Switch id="engineering" aria-selected={activeTab === 0 ? true : false} onClick={() => handleTabChange(0)}><span>⚙️</span>{tabView[0].title}</Switch>
             <Switch id="Technology" aria-selected={activeTab === 1 ? true : false} onClick={() => handleTabChange(1)}><span>💻</span>{tabView[1].title}</Switch>
-            <Switch id="Robotic" aria-selected={activeTab === 2 ? true : false} onClick={() => handleTabChange(2)}><span>🦾</span>{tabView[2].title}</Switch>
+            {/* <Switch id="Robotic" aria-selected={activeTab === 2 ? true : false} onClick={() => handleTabChange(2)}><span>🦾</span>{tabView[2].title}</Switch> */}
           </Tab>
 
           <Wrapper activetab={activeTab}>
@@ -102,7 +102,7 @@ export const TabPanel = () => {
                 url={tabView[activeTab].url}
               />
             }
-            {activeTab === 2 &&
+            {/* {activeTab === 2 &&
               <Panel
                 subtitle={tabView[activeTab].subtitle}
                 description={tabView[activeTab].description}
@@ -114,7 +114,7 @@ export const TabPanel = () => {
                 color={tabView[activeTab].color}
                 url={tabView[activeTab].url}
               />
-            }
+            } */}
           </Wrapper>
         </Content>
       </FadeInScroll>
