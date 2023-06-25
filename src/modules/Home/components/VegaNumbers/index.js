@@ -11,15 +11,15 @@ export const VegaNumbers = () => {
     return (
       [
         {
-          number: '250',
-          description: "Reais economizados com nossos dispositivos",
-        },
-        {
-          number: '10',
-          description: "Projetos executados",
+          number: '500',
+          description: "Reais economizados com nossas consultorias",
         },
         {
           number: '2',
+          description: "Projetos executados",
+        },
+        {
+          number: '1',
           description: "Empresas impactadas",
         },
         {
@@ -82,7 +82,7 @@ export const VegaNumbers = () => {
                       <CountUp
                         start={isVisible}
                         end={item.number}
-                        duration={4}
+                        duration={10}
                       />
                     </span> mil
                   </h4>
