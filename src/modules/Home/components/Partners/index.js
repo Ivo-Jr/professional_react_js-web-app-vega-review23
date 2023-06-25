@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { Container, Content, TitlePartner, DescriptionPartner, WrapperItem } from './styles.js'
 import logoNVIDIAImg from './assets/logoNVIDIA.png';
-import santandeLogo from './assets/santander-logo.svg';
+// import santandeLogo from './assets/santander-logo.svg';
 import fiapLogo from './assets/fiap-logo.svg';
 import pmiLogo from './assets/pmi-logo.svg';
 import altusLogo from './assets/altus-logo.svg'
@@ -20,10 +20,6 @@ export const Partners = () => {
         {
           benefitImg: fiapLogo,
           alt: "FIAP-Imagem"
-        },
-        {
-          benefitImg: santandeLogo,
-          alt: "SANTANDER-Imagem"
         },
         {
           benefitImg: altusLogo,

@@ -32,7 +32,7 @@ export const Footer = () => {
             <a href="https://api.whatsapp.com/send/?phone=%2B551151998949&text&type=phone_number&app_absent=0" target="_blank" rel="noreferrer" >
               <IoLogoWhatsapp />
             </a>
-            <a href="mailto:vega@vegarobotics.com.br">
+            <a href="mailto:contato@vegarobotics.com.br">
               <IoMdMail />
             </a>
             <Link to="/algoritmos">
