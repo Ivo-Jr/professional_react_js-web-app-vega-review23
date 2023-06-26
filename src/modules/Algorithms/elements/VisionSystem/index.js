@@ -13,7 +13,7 @@
     import Mira from "./mira"; 
     // import ObjectDetection from "../ObjectDetection";
     import Login from '../../../../components/Login/Login.js'
-    import Console from './console';
+    // import Console from './console';
     import * as S from "./styles";
     // import PlaygroundSpeedDial from "../../components/SpeedDial";
 
@@ -171,18 +171,41 @@
     
         message += ` Images are ${diffPercentageAdjusted.toFixed(2)}% different. Status: ${status}.`;
     
-        setConsoleData((prevState) => { 
-          const newConsoleData = [
-            ...prevState,
-            { message, date: currentDate, time: currentTime, status }, 
-          ];
-          return newConsoleData.length > 10 ? newConsoleData.slice(1) : newConsoleData;
+        setConsoleData((prevState) => {
+          let newConsoleData = [...prevState];
+          const lastIndex = newConsoleData.length - 1;
+        
+          if (lastIndex >= 0) {
+            newConsoleData[lastIndex] = { message, date: currentDate, time: currentTime, status };
+          } else {
+            newConsoleData = [{ message, date: currentDate, time: currentTime, status }];
+          }
+          
+          return newConsoleData;
         });
+        
     }, [approvedRange, setDiffImage, setDiffPercentage]);
 
 
 
-
+    const Console = ({ consoleData }) => {
+      return (
+        <div>
+          {consoleData.map((data, index) => (
+            <div key={index}>
+              <p>{data.date} {data.time} {diffPercentage ? (
+                                `Images are ${diffPercentage.toFixed(2)}% different.`
+                              ) : (
+                                "Images could not be compared."
+                              )}
+                                {diffPercentage && diffPercentage <= toleranceLevel
+                                  ? " Approved."
+                                  : " Disapproved."}</p>
+            </div>
+          ))}
+        </div>
+      );
+    }
 
 
 
@@ -361,8 +384,9 @@
                     </S.RealTimeImage>
 
                     <S.ConsoleWeb style={{display: 'flex', flexDirection: 'column-reverse'}}>
-  <Console consoleData={consoleData} />
-</S.ConsoleWeb>
+          <Console consoleData={consoleData} />
+        </S.ConsoleWeb>
+
 
 
                   </S.WrapperMain>
