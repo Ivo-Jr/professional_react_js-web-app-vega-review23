@@ -6,6 +6,10 @@ import logoNVIDIAImg from './assets/logoNVIDIA.png';
 import fiapLogo from './assets/fiap-logo.svg';
 import pmiLogo from './assets/pmi-logo.svg';
 import altusLogo from './assets/altus-logo.svg'
+import p1Logo from './assets/p1-logo-png.png'
+import kalatecLogo from './assets/kalatec-logo-png.png'
+import santanderxLogo from './assets/santanderx-logo-png.png'
+import santanderuniversidadesLogo from './assets/santanderuniversidades-logo-png.png'
 import { FadeInScroll } from '../../../../utils/fadeInScroll/index.js';
 
 
@@ -18,17 +22,33 @@ export const Partners = () => {
           alt: "NVIDIA-Imagem"
         },
         {
-          benefitImg: fiapLogo,
-          alt: "FIAP-Imagem"
-        },
-        {
           benefitImg: altusLogo,
           alt: "altus-Imagem"
         },
         {
+          benefitImg: p1Logo,
+          alt: "p1-Imagem"
+        },
+        {
+          benefitImg: kalatecLogo,
+          alt: "kalatec-Imagem"
+        },
+        {
           benefitImg: pmiLogo,
           alt: "PMI-Imagem"
-        }
+        },
+        {
+          benefitImg: santanderuniversidadesLogo,
+          alt: "santanderuniversidades-Imagem"
+        },
+        {
+          benefitImg: santanderxLogo,
+          alt: "santanderx-Imagem"
+        },
+        {
+          benefitImg: fiapLogo,
+          alt: "FIAP-Imagem"
+        },
       ]
     )
   }, []);
