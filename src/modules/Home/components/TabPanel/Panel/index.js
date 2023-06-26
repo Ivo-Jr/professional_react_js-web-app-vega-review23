@@ -1,6 +1,7 @@
 import React from 'react';
 
-import technologyImage from '../../../../../assets/techonology.jpg';
+// import technologyImage from '../../../../../assets/techonology.jpg';
+// import technologyImage from '../assets/VG422_2235483_41.png';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 import {
@@ -28,7 +29,8 @@ export const Panel = ({
   name,
   occupation,
   color,
-  url
+  url,
+  image
 }) => {
 
   return (
@@ -68,8 +70,8 @@ export const Panel = ({
       </SideLeft>
 
       <SideRight>
-        <img src={technologyImage} alt="imagem-tecnologia" />
-      </SideRight>
+    <img src={image} alt="imagem-tecnologia" />
+  </SideRight>
     </Container>
   )
 }

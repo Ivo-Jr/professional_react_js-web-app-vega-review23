@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
 
-// import avatarImage from '../../assets/ariadneIA.jpg';
 import avatarImage2 from '../../assets/diretorindustrial.png';
 import avatarImage3 from '../../assets/coordenadorengenharia.png';
+import technologyImage from './assets/VG422_2235483_41.png';
+import technologyImage2 from './assets/1OP_FERR_TANDEM_207-46-b1a10_207-46-b1a20_2.png';
 
 import {
   Container,
@@ -34,7 +35,8 @@ export const TabPanel = () => {
           name: "Carlos Roberto S.",
           occupation: "Diretor Industrial",
           color: "#891A14",
-          url: "/engineering"
+          url: "/engineering",
+          image: technologyImage
         },
         {
           title: "Tecnologia",
@@ -46,20 +48,9 @@ export const TabPanel = () => {
           name: "Felipe Martins",
           occupation: "Coordenador de Engenharia",
           color: "#4863f7",
-          url: "/technology"
+          url: "/technology",
+          image: technologyImage2
         }
-        // {
-        //   title: "Robotica",
-        //   subtitle: "Serviços de Robotica",
-        //   description: "A funcionaidade adequada para sua empresa, industria ou négocio está aqui! Há um clique de distância, aperte no botão abaixo para entender!",
-        //   ctaButtonText: "Conhecer a Robotica",
-        //   testimony: '"A VegaRobotics trás soluçòes simplesmente incríveis, muito prático, além do pronto atendimento, transparencia e cordialidade na execução dos projetos."',
-        //   avatar: avatarImage,
-        //   name: "Luiza D.",
-        //   occupation: "Remote Developer",
-        //   color: "#42d3ff",
-        //   url: "/"
-        // }
       ]
     )
   }, []);
@@ -74,7 +65,6 @@ export const TabPanel = () => {
           <Tab activetab={activeTab} color={tabView[activeTab].color}>
             <Switch id="engineering" aria-selected={activeTab === 0 ? true : false} onClick={() => handleTabChange(0)}><span>⚙️</span>{tabView[0].title}</Switch>
             <Switch id="Technology" aria-selected={activeTab === 1 ? true : false} onClick={() => handleTabChange(1)}><span>💻</span>{tabView[1].title}</Switch>
-            {/* <Switch id="Robotic" aria-selected={activeTab === 2 ? true : false} onClick={() => handleTabChange(2)}><span>🦾</span>{tabView[2].title}</Switch> */}
           </Tab>
 
           <Wrapper activetab={activeTab}>
@@ -89,6 +79,7 @@ export const TabPanel = () => {
                 occupation={tabView[activeTab].occupation}
                 color={tabView[activeTab].color}
                 url={tabView[activeTab].url}
+                image={tabView[activeTab].image}
               />
             }
             {activeTab === 1 &&
@@ -102,21 +93,9 @@ export const TabPanel = () => {
                 occupation={tabView[activeTab].occupation}
                 color={tabView[activeTab].color}
                 url={tabView[activeTab].url}
+                image={tabView[activeTab].image}
               />
             }
-            {/* {activeTab === 2 &&
-              <Panel
-                subtitle={tabView[activeTab].subtitle}
-                description={tabView[activeTab].description}
-                ctaButtonText={tabView[activeTab].ctaButtonText}
-                testimony={tabView[activeTab].testimony}
-                avatar={tabView[activeTab].avatar}
-                name={tabView[activeTab].name}
-                occupation={tabView[activeTab].occupation}
-                color={tabView[activeTab].color}
-                url={tabView[activeTab].url}
-              />
-            } */}
           </Wrapper>
         </Content>
       </FadeInScroll>
@@ -124,3 +103,4 @@ export const TabPanel = () => {
     </Container>
   )
 }
+
