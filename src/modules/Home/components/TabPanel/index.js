@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 
-import avatarImage from '../../assets/ariadneIA.jpg';
+// import avatarImage from '../../assets/ariadneIA.jpg';
+import avatarImage2 from '../../assets/diretorindustrial.png';
+import avatarImage3 from '../../assets/coordenadorengenharia.png';
 
 import {
   Container,
@@ -28,9 +30,9 @@ export const TabPanel = () => {
           description: "Você vai encontrar projetos de ponta feitos sob demanda utilizando as ferramentas mais modernas do mercado.",
           ctaButtonText: "Quero conhecer",
           testimony: '"A VegaRobotics trás soluçòes simplesmente incríveis, muito prático, além do pronto atendimento, transparencia e cordialidade na execução dos projetos."',
-          avatar: avatarImage,
-          name: "Luiza D.",
-          occupation: "Remote Developer",
+          avatar: avatarImage2,
+          name: "Carlos Roberto S.",
+          occupation: "Diretor Industrial",
           color: "#891A14",
           url: "/engineering"
         },
@@ -39,10 +41,10 @@ export const TabPanel = () => {
           subtitle: "Serviços de Tecnologia",
           description: "As melhores tecnologias alinhadas com sua necessidade. Aqui você encontra soluções adequadas com preços competitivos.",
           ctaButtonText: "Saiba Como",
-          testimony: '"A VegaRobotics trás soluçòes simplesmente incríveis, muito prático, além do pronto atendimento, transparencia e cordialidade na execução dos projetos."',
-          avatar: avatarImage,
-          name: "Luiza D.",
-          occupation: "Remote Developer",
+          testimony: '"A Vega Robotics transformou nossos processos com suas soluções de automação, aumentando a eficiência e reduzindo custos. Sua equipe é experiente e inovadora. Recomendo fortemente para quem busca otimização na indústria."',
+          avatar: avatarImage3,
+          name: "Felipe Martins",
+          occupation: "Coordenador de Engenharia",
           color: "#4863f7",
           url: "/technology"
         }
