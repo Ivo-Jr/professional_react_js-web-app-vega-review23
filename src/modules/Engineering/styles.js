@@ -58,7 +58,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: center;
 
-  background-color: #ffffff;
+  background-color: #333;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   cursor: pointer;
