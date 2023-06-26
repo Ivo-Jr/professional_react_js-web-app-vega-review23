@@ -18,11 +18,11 @@ export const Welcome = () => {
     <Container id="home">
       <Content imgprops={planetImg}>
         <Title>
-          Otimize seus Processos e Torne sua Organização mais Competitiva
+        Impulsione sua Competitividade com a Vega Robotics
         </Title>
 
         <SubTitle>
-          Oferecemos soluções de ponta a ponta para industria 4.0: Remodelamento de Processos Existentes (retrofit), Digitalização, Automação, Internet da Coisas, Computação em Nuvem, IA; a serviço da redução de custo e desperdicios para uma industria mais competitiva.
+        Revolucionamos a sua jornada para a Indústria 4.0. Com soluções de automação, digitalização, Internet das Coisas, Computação em Nuvem e Inteligência Artificial, remodelamos seus processos existentes para reduzir custos, eliminar desperdícios e levar sua empresa a novos patamares de eficiência.
         </SubTitle>
 
         <CTAButton>
