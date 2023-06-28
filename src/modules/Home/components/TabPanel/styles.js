@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.section`
   width: 100%;
-  height: 90vh;
+  /* height: 90vh; */
 
   position: relative;
 
@@ -26,7 +26,10 @@ export const Container = styled.section`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 1150px;  
+  max-width: calc(1150px + 9rem);
+  
+  margin-bottom: 23rem;
+  padding: 0rem 9rem;
 `;
 
 export const Tab = styled.ul`

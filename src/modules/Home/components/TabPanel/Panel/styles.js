@@ -18,6 +18,10 @@ export const Container = styled.div`
   ${props => props.color && css`
     animation: ${fadeIn} .5s ease forwards;
   `}
+
+  @media only screen and (max-width: 899px){
+    flex-wrap: wrap
+  }
 `;
 
 
@@ -26,6 +30,10 @@ export const SideLeft = styled.article`
 
   width: 100%;
   max-width: 560px;
+
+  @media only screen and (max-width: 899px){
+    max-width: auto;
+  }
 `;
 
 export const Subtitle = styled.h4`
@@ -36,6 +44,10 @@ export const Subtitle = styled.h4`
   font-size: 32px;
   line-height: 36px;
   color: var(--color-white);
+
+  @media only screen and (max-width: 899px){
+    max-width: 100%;
+  }
 `;
 
 export const Description = styled.p`
@@ -46,6 +58,10 @@ export const Description = styled.p`
   font-weight: 400;
   line-height: 26px;
   color: var(--color-gray);
+
+  @media only screen and (max-width: 899px){
+    max-width: 100%;
+  }
 `;
 
 export const CTAButton = styled.div`
@@ -110,6 +126,10 @@ export const Testimony = styled.div`
   font-size: 16px;
   line-height: 26px;
   color: var(--color-white);
+
+  @media only screen and (max-width: 899px){
+    max-width: 100%;
+  }
 `;
 
 export const Person = styled.section`
@@ -151,10 +171,14 @@ export const PersonInfo = styled.aside`
 
   width: 100%;
   height: 120px;
+
+  @media only screen and (max-width: 899px){
+    max-width: 540px;
+  }
 `;
 
 export const Name = styled.h4`
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 26px;
   color: var(--color-gray);
   font-weight: 700;
