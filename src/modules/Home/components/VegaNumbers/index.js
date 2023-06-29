@@ -34,10 +34,10 @@ export const VegaNumbers = () => {
 
   const handleScroll = () => {
     const element = document.getElementById('Wrapper-numbers');
-    const react = element.getBoundingClientRect();
+    const react = element?.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
 
-    if ((react.top + 70) < viewportHeight) {
+    if ((react?.top + 70) < viewportHeight) {
       setIsVisible(true);
     }
   }

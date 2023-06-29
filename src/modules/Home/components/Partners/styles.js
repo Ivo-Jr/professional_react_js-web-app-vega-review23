@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
 
   display: flex;
   align-items: center;
@@ -35,15 +35,23 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 1150px;
+
+  margin: 10rem 0rem;
 `;
 
 export const TitlePartner = styled.h3`
   margin-bottom: 24px;
 
-  font-size: 48px;
+  padding: 0rem 3rem;
+
+  font-size: 4.8rem;
   line-height: 54px;
   text-align: center;
   color: var(--color-gray);
+
+  @media only screen and (max-width: 580px){
+    font-size: 4rem
+  }
 `;
 
 export const DescriptionPartner = styled.p`
@@ -52,10 +60,16 @@ export const DescriptionPartner = styled.p`
   width: 100%;
   max-width: 490px;
 
-  font-size: 16px;
+  padding: 0rem 3rem;
+
+  font-size: 1.6rem;
   line-height: 26px;
   text-align: center;
   color: var(--color-gray);
+
+  @media only screen and (max-width: 580px){
+    font-size: 1.3rem;
+  }
 `;
 
 export const WrapperItem = styled.ul`

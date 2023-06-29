@@ -8,10 +8,10 @@ export const FadeInScroll = ({ children, id, sx, animationDelay }) => {
 
   const handleScroll = useCallback(() => {
     const element = document.getElementById(id);
-    const react = element.getBoundingClientRect();
+    const react = element?.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
 
-    if ((react.top + 70) < viewportHeight) {
+    if ((react?.top + 70) < viewportHeight) {
       setIsVisible(true);
     }
   }, [id]);

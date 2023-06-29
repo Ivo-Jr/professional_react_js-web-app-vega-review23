@@ -9,7 +9,7 @@ export const Container = styled.section`
   position: relative;
   
   width: 100%;
-  height: 80vh;
+  /* height: 80vh; */
 
   hr {
     bottom: 0;
@@ -23,7 +23,10 @@ export const Container = styled.section`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 1150px;
+  max-width: calc(1150px + 9rem);
+
+  margin: 20rem 0rem;
+  padding: 0rem 9rem;
 `;
 
 export const Header = styled.div`
@@ -33,14 +36,29 @@ export const Header = styled.div`
 
   width: 100%;
 
-  margin-bottom: 80px;
+  margin-bottom: 10rem;
+
+  @media only screen and (max-width: 780px){
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `;
 
 export const Title = styled.h4`
-  font-size: 48px;
+  width: 100%;
+  min-width: 350px;
+
+  font-size: 4.8rem;
   line-height: 54px;
   font-weight: 700;
   color: var(--color-gray);
+
+  @media only screen and (max-width: 780px){
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 0rem 3rem;
+    margin-bottom: 3rem;
+  }
 `;
 
 export const ImgTitle = styled.img`
@@ -50,9 +68,15 @@ export const ImgTitle = styled.img`
 export const Wrapper = styled.ul`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   width: 100%;
   max-width: 1150px;
+
+  @media only screen and (max-width: 691px){
+    justify-content: center;
+  }
+
 `;
 
 export const NumbersItem = styled.li`
@@ -97,5 +121,7 @@ export const NumbersItem = styled.li`
     line-height: 28px;
   }
 
-
+  @media only screen and (max-width: 691px){
+    margin-bottom: 5rem;
+  }
 `;

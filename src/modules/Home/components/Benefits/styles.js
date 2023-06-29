@@ -39,15 +39,22 @@ export const Container = styled.section`
 `;
 
 export const TitleBenefit = styled.h3`
-  font-size: 48px;
+  padding: 0rem 3rem;
+
+  font-size: 4.8rem;
   line-height: 54px;
   text-align: center;
   color: var(--color-gray);
+
+  @media only screen and (max-width: 470px){
+    font-size: 3.7rem;
+  }
 `;
 
 export const Wrapper = styled.ul`
   display: flex;
   justify-content: center;
+  align-items: center;
 
   flex-wrap: wrap;
 
@@ -55,7 +62,7 @@ export const Wrapper = styled.ul`
   max-width: 1150px;
 
   margin-top: 70px;
- 
+   
 
   /* li:nth-child(1) {
     animation: ${fadeIn} 1s forwards;

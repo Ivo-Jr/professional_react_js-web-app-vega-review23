@@ -31,8 +31,12 @@ export const BenefitSubtitle = styled.h4`
 
   color: var(--color-white);
   font-weight: bold;
-  font-size: 28px;
+  font-size: 2.8rem;
   line-height: 38px;
+  
+  @media only screen and (max-width: 470px){
+    font-size: 2.3rem;
+  }
 `;
 
 export const BenefitDescription = styled.p`
@@ -40,7 +44,11 @@ export const BenefitDescription = styled.p`
   max-width: 348px;
 
   color: var(--color-gray);
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 26px;
+  
+  @media only screen and (max-width: 470px){
+    font-size: 1.4rem;
+  }
 `;
