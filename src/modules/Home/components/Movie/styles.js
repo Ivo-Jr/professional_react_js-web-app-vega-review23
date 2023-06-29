@@ -56,35 +56,7 @@ export const SVideo = styled.div`
             /* margin-top: 10px; */
     }
 
-    @media (max-width: 700px){
-        #videoBanner {
-            width: 100%;
-            height: 40%;
-        
-            @keyframes fadeinup {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
 
-            /* Firefox < 16 */
-            @-moz-keyframes fadeinup {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-
-            /* Safari, Chrome and Opera > 12.1 */
-            @-webkit-keyframes fadeinup {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-
-            /* Internet Explorer */
-            @-ms-keyframes fadeinup {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-        }
-    }
 `;
 
 export const WrapperText = styled.div`
@@ -123,6 +95,17 @@ export const Subtitle = styled.h2`
     color: white;
     
     text-align: center;
+
+    @media only screen and (max-width: 899px){
+        padding: 0 3rem;
+        font-size: 3.5rem;
+    }
+
+    @media only screen and (max-width: 590px){
+        font-size: 2.8rem;
+        line-height: 4.8rem;
+        margin: 2.4rem 0rem;
+    }
 `;
 
 export const SText = styled.div`
