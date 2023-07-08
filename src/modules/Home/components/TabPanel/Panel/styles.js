@@ -48,6 +48,10 @@ export const Subtitle = styled.h4`
   @media only screen and (max-width: 899px){
     max-width: 100%;
   }
+  
+  @media only screen and (max-width: 590px){
+    font-size: 2.5rem;
+  }
 `;
 
 export const Description = styled.p`
@@ -61,6 +65,10 @@ export const Description = styled.p`
 
   @media only screen and (max-width: 899px){
     max-width: 100%;
+  }
+
+  @media only screen and (max-width: 590px){
+    font-size: 1.4rem;
   }
 `;
 
@@ -117,6 +125,11 @@ export const CTAButton = styled.div`
   &:hover {
     filter: brightness(.8)
   }
+  @media only screen and (max-width: 590px){
+    a{
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 export const Testimony = styled.div`
@@ -129,6 +142,10 @@ export const Testimony = styled.div`
 
   @media only screen and (max-width: 899px){
     max-width: 100%;
+  }
+
+  @media only screen and (max-width: 590px){
+    font-size: 1.4rem
   }
 `;
 
@@ -182,6 +199,10 @@ export const Name = styled.h4`
   line-height: 26px;
   color: var(--color-gray);
   font-weight: 700;
+
+  @media only screen and (max-width: 599px){
+    font-sizE: 1.4rem;
+  }
 `;
 
 export const Occupation = styled.span`
@@ -190,6 +211,10 @@ export const Occupation = styled.span`
   line-height: 26px;
   color: var(--color-gray);
   max-width: 206px;
+
+  @media only screen and (max-width: 599px){
+    font-sizE: 1.2rem;
+  }
 `;
 
 export const SideRight = styled.aside`

@@ -69,6 +69,15 @@ export const Title = styled.h1`
   color: var(--color-white);
 
   animation: ${fadeIn} 1s ease forwards;
+
+  @media only screen and (max-width: 899px){
+    padding: 0rem 3rem;
+  }
+
+  @media only screen and (max-width: 590px){
+    font-size: 4rem;
+    margin-bottom: 3.5rem;
+  }
 `;
 
 export const SubTitle = styled.h2`
@@ -86,6 +95,15 @@ export const SubTitle = styled.h2`
   opacity: 0;
   animation: ${fadeIn} 1s ease forwards;
   animation-delay: .5s;
+
+  @media only screen and (max-width: 899px){
+    padding: 0rem 3rem;
+  }
+
+  @media only screen and (max-width: 590px){
+    font-size: 1.4rem;
+    line-height: 2.3rem;
+  }
 `;
 
 export const WhatsApp = styled.a`
@@ -121,6 +139,14 @@ export const WhatsApp = styled.a`
 
   &:hover{
     bottom: 40px;
+  }
+  
+  @media only screen and (max-width: 899px){
+    font-size: 1.4rem
+  }
+
+  @media only screen and (max-width: 800px){
+    visibility: hidden
   }
 `;
 

@@ -28,8 +28,9 @@ export default createGlobalStyle`
     height: 100%;
     background-color: var(--color-background);
   }
-
-  /* ::-webkit-scrollbar {width: 0! important}
+  
+/* 
+  ::-webkit-scrollbar {width: 0! important}
     body {
       background-color: #161a1e;
     } */

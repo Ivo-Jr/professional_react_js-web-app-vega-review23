@@ -30,6 +30,10 @@ export const Content = styled.div`
   
   margin-bottom: 23rem;
   padding: 0rem 9rem;
+
+  @media only screen and (max-width: 590px){
+    padding: 0rem 3rem;
+  }
 `;
 
 export const Tab = styled.ul`
@@ -74,7 +78,32 @@ export const Tab = styled.ul`
             background: ${props => props.color};
           `
   }
+  
+  @media only screen and (max-width: 590px){
+    ${props => props.activetab === 0
+    ? css`
+          transform: translate(0px, 2.5px);
+          left: 0;
+          width: 122px;
+          background: ${props => props.color};
+        `
+    : props.activetab === 1
+      ? css`
+            transform: translate(143px, 2.5px);
+            left: 0;
+            width: 121px;
+            background: ${props => props.color};
+          `
+      : css`
+            transform: translate(400px, 2.5px);
+            left: 0;
+            width: 123px;
+            background: ${props => props.color};
+          `
   }
+  }
+  }
+
 
 `;
 
@@ -112,6 +141,15 @@ export const Switch = styled.li`
 
   &:hover{
     filter: brightness(1);
+  }
+
+  @media only screen and (max-width: 590px){
+    font-size: 1.8rem;
+
+    & + li {
+    margin-left: 2rem;
+    padding-left: 0.5rem;
+  }
   }
 `;
 
