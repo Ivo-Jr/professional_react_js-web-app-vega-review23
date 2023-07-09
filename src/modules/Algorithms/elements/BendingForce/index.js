@@ -10,14 +10,21 @@ export const BendingForce = () => {
   const [nro2, setNro2] = useState(0);
   const [nro3, setNro3] = useState(0);
   const [resultado, setResultado] = useState(0);
+  const [esforcoPrensa, setEsforcoPrensa] = useState(0);
   const [projectName, setProjectName] = useState('');
 
-  const calcular = () => {
-    return (((parseFloat(nro1) * parseFloat(nro2) * parseFloat(nro3)) * 0.00010197) * 1 / 3);
-  }
-
   useEffect(() => {
-    setResultado(calcular())
+    const calcular = () => {
+      return (((parseFloat(nro1) * parseFloat(nro2) * parseFloat(nro3)) * 0.00010197) * 1 / 3);
+    }
+
+    const esforco = () => {
+      return calcular() * 0.10;
+    }
+
+    setResultado(calcular());
+    setEsforcoPrensa(esforco());
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nro1, nro2, nro3])
 
@@ -53,7 +60,7 @@ export const BendingForce = () => {
               onChange={(e) => setNro3(e.target.value)}
             />
             <span>The bending effort will be: {resultado.toFixed(1)} tons</span>
-            <span>The effort for the plate press will be: {(((nro1 * nro2 * nro3 * 0.00010197) * 1 / 3) * 0.10).toFixed(2)} tons</span>
+            <span>The effort for the plate press will be: {esforcoPrensa.toFixed(2)} tons</span>
             <PDF selector="body" projectName={projectName} />
           </S.Calc>
         </S.Content>
