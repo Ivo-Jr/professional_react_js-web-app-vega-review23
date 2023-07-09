@@ -1,15 +1,15 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useContext } from "react";
 
-import { Routes, Route } from "react-router-dom"
+import { LoadingContext } from "./LoadingContext";
+import { Loading } from "./loading";
+import { Routes, Route } from "react-router-dom";
 import { Home } from "../modules/Home";
 import { Technology } from "../modules/Technology";
-import { Layout } from "../components/Layout/Content"
+import { Layout } from "../components/Layout/Content";
 import { Engineering } from "../modules/Engineering";
 import { Algorithms } from "../modules/Algorithms";
-// import GrossWeight from "../modules/Algorithms/elements/GrossWeight";
 import { BendingForce } from "../modules/Algorithms/elements/BendingForce";
 import EnergyConsumption from "../modules/Algorithms/elements/EnergyConsumption";
-// import { MPFaceMesh } from "../modules/Algorithms/elements/FaceMesh";
 import VisionSystem from "../modules/Algorithms/elements/VisionSystem";
 import { ObjectDetection } from "../modules/Algorithms/elements/ObjectDetection";
 import { VME } from "../modules/Algorithms/elements/VME";
@@ -28,43 +28,45 @@ const CuttingForce = lazy(() => import('../modules/Algorithms/elements/CuttingFo
 const MPFaceMesh = lazy(() => import('../modules/Algorithms/elements/FaceMesh'));
 
 export const AppRoutes = () => {
+  const { loading } = useContext(LoadingContext);
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/technology" element={<Technology />} />
-          <Route path="/engineering" element={<Engineering />} />
+    <Suspense fallback={<Loading />}>
+      {loading ? <Loading /> : (
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/technology" element={<Technology />} />
+            <Route path="/engineering" element={<Engineering />} />
 
-          <Route path="algorithms" element={<Algorithms />} />
-          <Route path="algorithms/grossweight" element={<GrossWeight />} />
-          <Route path="algorithms/cuttingforce" element={<CuttingForce />} />
-          <Route path="algorithms/bendingforce" element={<BendingForce />} />
-          <Route path="algorithms/energyConsumption" element={<EnergyConsumption />} />
-          <Route path="algorithms/vixem" element={
-            <Suspense fallback={<div>Loading...</div>}>
-              <MPFaceMesh />
-            </Suspense>
-          } />
-          <Route path="algorithms/visionsystem" element={<VisionSystem />} />
-          <Route path="algorithms/objectdetection" element={<ObjectDetection />} />
-          <Route path="algorithms/vme" element={<VME />} />
-          <Route path="algorithms/riskprioritization" element={<RiskPrioritization />} />
-          <Route path="algorithms/screencaptureanddisplay" element={<ScreenCaptureAndDisplay />} />
+            <Route path="algorithms" element={<Algorithms />} />
+            <Route path="algorithms/grossweight" element={<GrossWeight />} />
+            <Route path="algorithms/cuttingforce" element={<CuttingForce />} />
+            <Route path="algorithms/bendingforce" element={<BendingForce />} />
+            <Route path="algorithms/energyConsumption" element={<EnergyConsumption />} />
+            <Route path="algorithms/vixem" element={
+              <Suspense fallback={<Loading />}>
+                <MPFaceMesh />
+              </Suspense>
+            } />
+            <Route path="algorithms/visionsystem" element={<VisionSystem />} />
+            <Route path="algorithms/objectdetection" element={<ObjectDetection />} />
+            <Route path="algorithms/vme" element={<VME />} />
+            <Route path="algorithms/riskprioritization" element={<RiskPrioritization />} />
+            <Route path="algorithms/screencaptureanddisplay" element={<ScreenCaptureAndDisplay />} />
 
-          <Route path="articles" element={<Article />} />
-          <Route path="articles/bestpractices" element={<BestPracticesInProjects />} />
-          <Route path="articles/grabcad" element={<GrabCad />} />
-          <Route path="articles/linearguides" element={<LinearGuides />} />
-          <Route path="articles/ppf" element={<PPF />} />
+            <Route path="articles" element={<Article />} />
+            <Route path="articles/bestpractices" element={<BestPracticesInProjects />} />
+            <Route path="articles/grabcad" element={<GrabCad />} />
+            <Route path="articles/linearguides" element={<LinearGuides />} />
+            <Route path="articles/ppf" element={<PPF />} />
 
-          <Route path="budget" element={<Budget />} />
+            <Route path="budget" element={<Budget />} />
 
-          <Route path="forms" element={<Quiz />} />
-
-        </Route>
-      </Routes >
+            <Route path="forms" element={<Quiz />} />
+          </Route>
+        </Routes>
+      )}
     </Suspense>
-
-  )
-}
+  );
+};
