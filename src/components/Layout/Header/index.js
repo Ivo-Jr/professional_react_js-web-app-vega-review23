@@ -8,11 +8,12 @@ import logo from '../../../assets/vega-header.svg';
 import { FiUser } from "react-icons/fi";
 
 function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scroll, setScroll] = useState(false);
-
   const menuRef = useRef();
-  const location = useLocation();
+  const { pathname } = useLocation();
+  
+  const [ menuOpen, setMenuOpen ] = useState(false);
+  const [ scroll, setScroll ] = useState(false);
+  const [ initialPosition, setinitialPosition ] = useState(false);
 
   const filledRoutes = useMemo(() => {
     return (
@@ -24,7 +25,6 @@ function Header() {
         '/bendingforce',
         '/vme',
         '/riskprioritization',
-        '/visionsystem',
         '/objectdetection',
         '/ppf',
         '/budget',
@@ -35,6 +35,12 @@ function Header() {
   const toggleMenu = useCallback(() => {
     setMenuOpen(prevMenuOpen => !prevMenuOpen);
   }, []);
+
+  const handlePath = useCallback(() => {
+    const result = pathname.includes("visionsystem");
+
+    setinitialPosition(result);
+  },[pathname])
 
   const handleClickOutside = useCallback((event) => {
     if (menuOpen && !menuRef.current.contains(event.target)) {
@@ -70,12 +76,16 @@ function Header() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     };
-  }, [location.pathname, handleScroll]);
+  }, [pathname, handleScroll]);
+
+  useEffect(() => {
+    handlePath()
+  },[handlePath])
 
   return (
     <>
       <S.Overlay visible={menuOpen ? 1 : 0} onClick={toggleMenu} />
-      <S.Container scroll={scroll ? 1 : 0}>
+      <S.Container $initialposition={initialPosition} scroll={scroll ? 1 : 0}>
 
         <S.LeftSide>
           <a href="/">

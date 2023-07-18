@@ -37,7 +37,7 @@ const actions = [
 ];
 
 export default function PlaygroundSpeedDial() {
-  const [direction, setDirection] = React.useState('down');
+  const [direction, setDirection] = React.useState('right');
   const [hidden, setHidden] = React.useState(false);
 
   // const handleDirectionChange = (event) => {

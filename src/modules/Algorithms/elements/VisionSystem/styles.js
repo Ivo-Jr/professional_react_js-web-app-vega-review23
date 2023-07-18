@@ -22,28 +22,32 @@ const responsiveStyles = `
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  /* height: calc(100vh - 130px); */
-
+  /* height: 100vh; */
+  height: 100%;
   
-  padding-top: 95px;
+  /* padding-top: 95px; */
+  padding-top: 0px;
+
 
   background-color: var(--color-background);
   ${responsiveStyles}
+
+  /* @media only screen and (max-width: 800px){
+    padding-top: 0px;
+  } */
 `;
 
-export const Body = styled.div`
+export const Content = styled.main`
   display: flex;
 
   width: 100%;
-  /* height: calc(100vh - 130px); */
   height: 100%;
   
 
   /* padding-top: 100px; */
   
   /* background-color: green; */
-  ${responsiveStyles}
+  /* ${responsiveStyles} */
 `;
 
 export const Controllers = styled.div`
@@ -59,7 +63,10 @@ export const Controllers = styled.div`
   border: 1px solid var(--color-gray);
   border-radius: 5px; 
   padding: 4.5rem 0.5rem; 
-  
+
+  @media only screen and (max-width: 1200px){
+    display: none;    
+  }
 `;
 
 export const Button = styled.button`
@@ -158,6 +165,14 @@ export const CentralSection = styled.div`
   /* background: yellow; */
 `;
 
+export const ContainerSpeed = styled.div`
+  visibility: hidden;
+
+  @media only screen and (max-width: 1200px){
+    visibility: visible;    
+  }
+`;
+
 export const WrapperMain = styled.div`
   display: flex;
   justify-content: center;
@@ -174,6 +189,34 @@ export const WrapperMain = styled.div`
   
   /* background: blue; */
 `;
+
+export const InnerRight = styled.div`
+  display: flex;
+  align-items: space-around;
+
+  flex-direction: column;
+
+  position: absolute;
+  top: 1rem;
+  right: 0.5rem;
+
+  z-index: 1;
+
+  width: 25%;
+
+  article:first-child {
+    margin-bottom: 1rem;
+  }
+
+  @media only screen and (min-width: 960px){
+    display: none
+  }
+
+  @media only screen and (max-width: 800px){
+    display: none
+  }
+`;
+
 
 export const RealTimeImage = styled.div`
   /* display: flex; */
@@ -265,12 +308,20 @@ export const WebcamWrapper = styled.div`
     border-radius: 5px;
     border: 1px solid var(--color-gray);
 
-  video {
+    video {
       width: 100%;
       height: 100%;
   
       border-radius: 5px;
     }
+  }
+
+  @media only screen and (max-width: 800px) {
+    align-items: end;
+  }
+
+  @media only screen and (min-width: 1830px) {
+    align-items: initial;
   }
 
 `;
@@ -334,6 +385,10 @@ export const WrapperSecondary = styled.aside`
   margin-left: 5px;
 
   width: 30%;
+
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 export const CapturedImage = styled.article`
