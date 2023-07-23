@@ -29,11 +29,11 @@ export const Welcome = () => {
     <Container id="home">
       <Content imgprops={planetImg}>
         <Title>
-        Impulsione sua Competitividade com a Vega Robotics
+          Impulsione sua Competitividade com a Vega Robotics
         </Title>
 
         <SubTitle>
-        Revolucionamos a sua jornada para a Indústria 4.0. Com soluções de automação, digitalização, Internet das Coisas, Computação em Nuvem e Inteligência Artificial, remodelamos seus processos existentes para reduzir custos, eliminar desperdícios e levar sua empresa a novos patamares de eficiência.
+          Revolucionamos a sua jornada para a Indústria 4.0. Com soluções de automação, digitalização, Internet das Coisas, Computação em Nuvem e Inteligência Artificial, remodelamos seus processos existentes para reduzir custos, eliminar desperdícios e levar sua empresa a novos patamares de eficiência.
         </SubTitle>
 
         <CTAButton onClick={handleCTAClick}>

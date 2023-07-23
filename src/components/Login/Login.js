@@ -11,7 +11,7 @@ const Container = styled.div`
   margin: 0px;
 
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 223px);
   
   /* min-height: 50vh; */
   background: var(--color-white);

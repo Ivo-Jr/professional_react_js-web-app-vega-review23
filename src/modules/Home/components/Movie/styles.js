@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    /* height: calc(100% - 80px); */
 
     position: relative;
     
@@ -23,6 +23,8 @@ export const Content = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transform: translate(0px, -100px);
 
     flex-direction: column;
 
@@ -84,7 +86,7 @@ export const Subtitle = styled.h2`
     align-items: center;
 
     margin: 20px 24px;
-    padding-bottom: 80px;
+    /* padding-bottom: 80px; */
 
     width: 100%;
     max-width: 1100px;

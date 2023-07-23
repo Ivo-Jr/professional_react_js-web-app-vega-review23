@@ -4,13 +4,6 @@ import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import CameraswitchIcon from '@mui/icons-material/Cameraswitch';
-import AdsClickIcon from '@mui/icons-material/AdsClick';
-import DifferenceIcon from '@mui/icons-material/Difference';
-import ScreenshotMonitorIcon from '@mui/icons-material/ScreenshotMonitor';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import PlagiarismIcon from '@mui/icons-material/Plagiarism';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 import { WrapperSpeedDial } from './styles';
 
@@ -26,34 +19,16 @@ const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
   },
 }));
 
-const actions = [
-  { icon: <CameraswitchIcon />, name: 'switch' },
-  { icon: <AdsClickIcon />, name: 'trigger' },
-  { icon: <DifferenceIcon />, name: 'Acceptable Difference' },
-  { icon: <ScreenshotMonitorIcon />, name: 'capture image' },
-  { icon: <WorkspacePremiumIcon />, name: 'set quality as default' },
-  { icon: <PlagiarismIcon />, name: 'Inspect' },
-  { icon: <RocketLaunchIcon />, name: 'Execution' },
-];
-
-export default function PlaygroundSpeedDial() {
+export default function PlaygroundSpeedDial({ actionObject }) {
   const [direction, setDirection] = React.useState('right');
   const [hidden, setHidden] = React.useState(false);
-
-  // const handleDirectionChange = (event) => {
-  //   setDirection(event.target.value);
-  // };
-
-  // const handleHiddenChange = (event) => {
-  //   setHidden(event.target.checked);
-  // };
 
   return (
     <Box sx={{
       position: 'absolute',
       zIndex: 4,
       top: '2rem',
-      left: '1rem',
+      left: '.8rem',
     }}>
       <WrapperSpeedDial>
         <StyledSpeedDial
@@ -62,11 +37,19 @@ export default function PlaygroundSpeedDial() {
           icon={<SpeedDialIcon />}
           direction={direction}
         >
-          {actions.map((action) => (
+          {actionObject.map((action) => (
             <SpeedDialAction
-              key={action.name}
+              key={action.button}
               icon={action.icon}
-              tooltipTitle={action.name}
+              tooltipTitle={action.button}
+              onClick={action.actionButton}
+              sx={{
+                '@media (max-width: 499px)': {
+                  width: '36px',
+                  padding: '0px',
+                  margin: '3px',
+                }
+              }}
             />
           ))}
         </StyledSpeedDial>

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState, useCallback, useMemo } from "react";
 // import ObjectDetectionResults from "./ObjectDetectionResults";
 import Webcam from "react-webcam";
 import ObjectDetectionToggle from './ObjectDetectionToggle';
@@ -16,9 +16,15 @@ import Login from '../../../../components/Login/Login.js'
 // import Console from './console';
 import * as S from "./styles";
 import PlaygroundSpeedDial from "../../components/SpeedDial";
-// import PlaygroundSpeedDial from "../../components/SpeedDial";
+import { ImageResultComponent } from "../../components/ImagesResultCompare/styles";
+import { ImagesResultCompare } from "../../components/ImagesResultCompare";
+import { AdsClick, Cameraswitch, Difference, Plagiarism, RocketLaunch, ScreenshotMonitor, WorkspacePremium } from "@mui/icons-material";
+import ModalComponent from "../../../../components/Modal";
 
 function VisionSystem() {
+  const webcamRef = useRef(null);
+  const canvasRef = useRef(null); // Adicione esta linha
+
   const [imageClassName, setImageClassName] = useState("");
   const [modal, setModal] = useState(false);
   const [webcamImage, setWebcamImage] = useState(null);
@@ -38,16 +44,15 @@ function VisionSystem() {
   // const modalText = diffPercentage && diffPercentage >= 95 ? "Aprovado" : "Reprovado";
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [objectDetectionResults, setObjectDetectionResults] = useState([]);
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null); // Adicione esta linha
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+  const [open, setOpen] = useState(false);
 
   const credentials = {
     client: "VIXEM",
     password: "VR901",
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
   };
 
   const handlePredictions = useCallback((predictions) => {
@@ -107,11 +112,6 @@ function VisionSystem() {
     }
   }, [savedImage, webcamImage, localStorageImage, useLocalStorage, clearLocalStorage]);
 
-
-
-
-
-
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setWebcamImage(imageSrc);
@@ -120,7 +120,6 @@ function VisionSystem() {
     }
     localStorage.setItem("webcamImage", imageSrc);
   }, [webcamRef, directory]);
-
 
   const setImageState = useCallback((img1, img2, canvas1, canvas2, ctx1, ctx2, diff, diffCanvas) => {
     ctx1.drawImage(img1, 0, 0);
@@ -187,8 +186,6 @@ function VisionSystem() {
 
   }, [approvedRange, setDiffImage, setDiffPercentage]);
 
-
-
   const Console = ({ consoleData }) => {
     return (
       <div>
@@ -207,8 +204,6 @@ function VisionSystem() {
       </div>
     );
   }
-
-
 
   const setImageClass = useCallback(
     (diffPercentage, toleranceLevel) => {
@@ -247,21 +242,116 @@ function VisionSystem() {
     [setImageState]
   );
 
+  const handleOpen = () => setOpen(true);
 
+  const handleSwitch = () => {
+    setFacingMode(facingMode === 'environment' ? 'user' : 'environment');
+  };
 
+  const handleTrigger = () => {
+    setObjectDetectionActivated((prevState) => !prevState);
+  };
 
+  const handleAcceptableDifference = (e) => {
+    setToleranceLevel(e.target.value)
+  };
 
+  const handleImageCapture = () => {
+    capture();
+    compareImages();
+  };
 
+  const handleQualityStandard = useCallback(() => {
+    const currentImage = localStorage.getItem("webcamImage");
 
+    setLocalStorageImage(currentImage);
+    setSavedImage(currentImage);
+    setUseLocalStorage(!useLocalStorage);
+  }, [setLocalStorageImage, setSavedImage, setUseLocalStorage]);
 
+  const handleInspect = () => {
+    capture();
+    compareImages();
+  };
 
+  const handleNewVerification = () => {
+    newVerification();
+  };
+
+  const handleInputAcceptableDiferrence = () => {
+    return (
+      <div
+        style={{
+          display: "flex", justifyContent: "center", alignItems: "center"
+        }}
+      >
+        <input
+          type="number"
+          min={0}
+          max={100}
+          placeholder="%"
+          value={toleranceLevel}
+          onChange={(e) => handleAcceptableDifference(e)}
+        />
+        <h2>%</h2>
+      </div>
+    )
+  }
+
+  const actionsObject = useMemo(() => {
+    return (
+      [
+        {
+          button: 'Switch',
+          icon: <Cameraswitch />,
+          actionButton: handleSwitch,
+        },
+        {
+          button: 'Trigger',
+          icon: <AdsClick />,
+          actionButton: handleTrigger,
+        },
+        {
+          button: 'Acceptable Difference',
+          icon: <Difference />,
+          actionButton: handleOpen,
+        },
+        {
+          button: 'Capture image',
+          icon: <ScreenshotMonitor />,
+          actionButton: handleImageCapture,
+        },
+        {
+          button: 'Set quality as default',
+          icon: <WorkspacePremium />,
+          actionButton: handleQualityStandard,
+        },
+        {
+          button: 'Inspect',
+          icon: <Plagiarism />,
+          actionButton: handleInspect,
+        },
+        {
+          button: 'New verification',
+          icon: <RocketLaunch />,
+          actionButton: handleNewVerification,
+        },
+      ]
+    )
+  }, [handleSwitch,
+    handleTrigger,
+    handleAcceptableDifference,
+    handleImageCapture,
+    handleQualityStandard,
+    handleInspect,
+    handleNewVerification
+  ]);
 
   const videoConstraints = {
     width: window.innerWidth,
     // height: window.innerHeight,
     facingMode: facingMode,
   };
-
 
   const closeModal = useCallback(() => {
     setModal(false);
@@ -278,17 +368,9 @@ function VisionSystem() {
     setSavedImage(null);
   }, []);
 
-  // 1270
-  // 960
-  // 960 -> 800 (telas sobrepostas)
-  // < 800 -> tela em cima;
-
-  // 900-> fazer tela deitada;
-
   return (
     <S.Container>
-      {/* {!isLoggedIn ? ( */}
-      {false ? (
+      {!isLoggedIn ? (
         <Login onLogin={handleLogin} credentials={credentials} />
       ) : (
         <HelmetComponent element="VisionSystem">
@@ -299,7 +381,7 @@ function VisionSystem() {
                 Switch camera
               </S.Button>
 
-              <S.Button onClick={() => setObjectDetectionActivated((prevState) => !prevState)}>
+              <S.Button onClick={handleTrigger}>
                 {objectDetectionActivated ? 'Disable' : 'Activate'} trigger
               </S.Button>
 
@@ -308,52 +390,23 @@ function VisionSystem() {
                   1º → Acceptable Difference:
                 </span>
                 <S.Range>
-                  <input
-                    type="number"
-                    min={0}
-                    max={100}
-                    placeholder="%"
-                    value={toleranceLevel}
-                    onChange={(e) => {
-                      setToleranceLevel(e.target.value);
-                    }}
-                  />
-                  <h1>%</h1>
+                  {handleInputAcceptableDiferrence()}
                 </S.Range>
               </S.Button>
 
-              <S.Button onClick={() => {
-                capture();
-                compareImages();
-              }}>2º → Capture Image</S.Button>
+              <S.Button onClick={handleImageCapture}>
+                2º → Capture Image
+              </S.Button>
 
-
-
-
-              <S.Button
-                onClick={() => {
-                  const currentImage = localStorage.getItem("webcamImage");
-                  setLocalStorageImage(currentImage);
-                  setSavedImage(currentImage);
-                  setUseLocalStorage(!useLocalStorage);
-                }}
-              >
+              <S.Button onClick={handleQualityStandard}>
                 3º → Set as Quality Standard
               </S.Button>
 
-
-              <S.Button onClick={() => {
-                capture();
-                compareImages();
-              }}>4º → Inspect</S.Button>
-
-
-
-
-
+              <S.Button onClick={handleInspect}>
+                4º → Inspect
+              </S.Button>
 
               <S.Button onClick={newVerification}>New Verification</S.Button>
-
             </S.Controllers>
 
             <S.CentralSection>
@@ -365,50 +418,107 @@ function VisionSystem() {
                   <>
                     {/* <p>See live camera feed here.</p> */}
                     <S.WebcamWrapper>
-                      
-                      {/* <ObjectDetectionResults objectDetectionResults={predictions} /> */}
-                      <section>
-                        <S.ContainerSpeed>
-                          <PlaygroundSpeedDial />
-                        </S.ContainerSpeed>
-
-                        <S.InnerRight>
+                      <S.ImageResultComponent>
+                        <section className="captures-section">
                           <S.CapturedImage>
+                            <S.WrapperTitle>
+                              <S.Title>Captured Image</S.Title>
+                            </S.WrapperTitle>
                             <img
                               src={localStorage.getItem("webcamImage")}
                               alt="Captured-Webcam-Image"
                             />
                           </S.CapturedImage>
 
-                          <S.ResultantImage>
-                            {diffImage && (
-                              <img
-                                src={diffImage}
-                                className={imageClassName}
-                                alt="Comparison Result"
-                              />
-                            )}
-                          </S.ResultantImage>
+                          <S.CapturedImage>
+                            <S.WrapperTitle>
+                              <S.Title>Result</S.Title>
+                            </S.WrapperTitle>
+                            <S.ResultantImage>
+                              {diffImage && (
+                                <img
+                                  src={diffImage}
+                                  className={imageClassName}
+                                  alt="Comparison Result"
+                                />
+                              )}
+                            </S.ResultantImage>
+                          </S.CapturedImage>
+                        </section>
 
-                            {modal && (
+                        {modal && (
+                          <div className="modal">
+                            <S.Modal>
                               <div className="modal">
-                                <S.Modal>
-                                  <div className="modal">
-                                    <p>
-                                      {diffPercentage ? (
-                                        `Images are ${diffPercentage.toFixed(2)}% different.`
-                                      ) : (
-                                        "Images could not be compared."
-                                      )}
-                                        {diffPercentage && diffPercentage <= toleranceLevel
-                                          ? " Approved."
-                                          : " Disapproved."}
-                                    </p>
-                                    <S.Button onClick={closeModal}>Close</S.Button>
-                                  </div>
-                                </S.Modal>
+                                <p>
+                                  {diffPercentage ? (
+                                    `Images are ${diffPercentage.toFixed(2)}% different.`
+                                  ) : (
+                                    "Images could not be compared."
+                                  )}
+                                  {diffPercentage && diffPercentage <= toleranceLevel
+                                    ? " Approved."
+                                    : " Disapproved."}
+                                </p>
+                                <S.Button onClick={closeModal}>Close</S.Button>
                               </div>
-                            )}
+                            </S.Modal>
+                          </div>
+                        )}
+                      </S.ImageResultComponent>
+
+                      {/* <ObjectDetectionResults objectDetectionResults={predictions} /> */}
+                      <section >
+                        <S.ContainerSpeed>
+                          <PlaygroundSpeedDial
+                            actionObject={actionsObject}
+                          />
+                        </S.ContainerSpeed>
+
+                        <S.InnerRight>
+                          <S.WrapperTitle style={{ background: "#333" }}>
+                            <S.Title>Captured Image</S.Title>
+                          </S.WrapperTitle>
+                          <S.CapturedImage>
+                            <img
+                              src={localStorage.getItem("webcamImage")}
+                              alt="Captured-Webcam-Image"
+                            />
+                          </S.CapturedImage>
+                          {diffImage && (
+                            <>
+                              <S.WrapperTitle style={{ background: "#333" }}>
+                                <S.Title>Result</S.Title>
+                              </S.WrapperTitle>
+                              <S.ResultantImage>
+                                <img
+                                  src={diffImage}
+                                  className={imageClassName}
+                                  alt="Comparison Result"
+                                />
+                              </S.ResultantImage>
+                            </>
+                          )}
+
+                          {modal && (
+                            <div className="modal">
+                              <S.Modal>
+                                <div className="modal">
+                                  <p>
+                                    {diffPercentage ? (
+                                      `Images are ${diffPercentage.toFixed(2)}% different.`
+                                    ) : (
+                                      "Images could not be compared."
+                                    )}
+                                    {diffPercentage && diffPercentage <= toleranceLevel
+                                      ? " Approved."
+                                      : " Disapproved."}
+                                  </p>
+                                  <S.Button onClick={closeModal}>Close</S.Button>
+                                </div>
+                              </S.Modal>
+                            </div>
+                          )}
                         </S.InnerRight>
 
                         <ObjectDetectionResults predictions={predictions} />
@@ -416,7 +526,7 @@ function VisionSystem() {
                           ref={webcamRef}
                           mirrored
                           videoConstraints={videoConstraints}
-                          />
+                        />
 
                       </section>
                       {/* <Mira width={320} height={240} /> */}
@@ -439,62 +549,64 @@ function VisionSystem() {
               </S.WrapperMain>
 
 
-          <S.WrapperSecondary>
-            <S.CapturedImage>
-              <S.WrapperTitle>
-                <S.Title>Captured Image</S.Title>
-              </S.WrapperTitle>
-              {/* <p>Stored image for comparison.</p> */}
-              <img
-                src={localStorage.getItem("webcamImage")}
-                alt="Captured-Webcam-Image"
-              />
-            </S.CapturedImage>
+              <S.WrapperSecondary>
+                <S.CapturedImage>
+                  <S.WrapperTitle>
+                    <S.Title>Captured Image</S.Title>
+                  </S.WrapperTitle>
+                  {/* <p>Stored image for comparison.</p> */}
+                  <img
+                    src={localStorage.getItem("webcamImage")}
+                    alt="Captured-Webcam-Image"
+                  />
+                </S.CapturedImage>
 
-            <S.ResultantImage>
-              <S.WrapperTitle>
-                <S.Title>Result</S.Title>
-              </S.WrapperTitle>
-              {/* <p>See comparison results here.</p> */}
-              {diffImage && (
-                <img
-                  src={diffImage}
-                  className={imageClassName}
-                  alt="Comparison Result"
-                />
-              )}
-            </S.ResultantImage>
+                <S.ResultantImage>
+                  <S.WrapperTitle>
+                    <S.Title>Result</S.Title>
+                  </S.WrapperTitle>
+                  {/* <p>See comparison results here.</p> */}
+                  {diffImage && (
+                    <img
+                      src={diffImage}
+                      className={imageClassName}
+                      alt="Comparison Result"
+                    />
+                  )}
+                </S.ResultantImage>
 
-            {modal && (
-              <div className="modal">
-                <S.Modal>
+                {modal && (
                   <div className="modal">
-                    <p>
-                      {diffPercentage ? (
-                        `Images are ${diffPercentage.toFixed(2)}% different.`
-                      ) : (
-                        "Images could not be compared."
-                      )}
-                        {diffPercentage && diffPercentage <= toleranceLevel
-                          ? " Approved."
-                          : " Disapproved."}
-                    </p>
-                    <S.Button onClick={closeModal}>Close</S.Button>
+                    <S.Modal>
+                      <div className="modal">
+                        <p>
+                          {diffPercentage ? (
+                            `Images are ${diffPercentage.toFixed(2)}% different.`
+                          ) : (
+                            "Images could not be compared."
+                          )}
+                          {diffPercentage && diffPercentage <= toleranceLevel
+                            ? " Approved."
+                            : " Disapproved."}
+                        </p>
+                        <S.Button onClick={closeModal}>Close</S.Button>
+                      </div>
+                    </S.Modal>
                   </div>
-                </S.Modal>
-              </div>
-            )}
-            </S.WrapperSecondary>
+                )}
+              </S.WrapperSecondary>
 
-              
-          </S.CentralSection>
+            </S.CentralSection>
 
-                 
           </S.Content>
         </HelmetComponent>
       )}
+
+      <ModalComponent open={open} setOpen={setOpen}>
+        {handleInputAcceptableDiferrence()}
+      </ModalComponent>
     </S.Container>
   );
-};
+}
 
 export default VisionSystem;
