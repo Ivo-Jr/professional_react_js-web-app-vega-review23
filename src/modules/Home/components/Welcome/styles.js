@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 export const Container = styled.main`
   width: 100%;
   /* height: calc(100vh - 95px); */
-  height: 100vh;
+  /* height: 100%; */
 
   /* padding-top: 95px; */
   /* position: relative; */
@@ -21,7 +21,7 @@ export const Content = styled.section`
   align-items: center;
   flex-direction: column;
 
-  background-image: url(${({imgprops}) => imgprops});
+  background-image: url(${({ imgprops }) => imgprops});
   background-repeat: no-repeat;
   background-size: cover;
 

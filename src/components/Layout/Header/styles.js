@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  position: fixed;
+  position: ${props => props.$initialposition ? 'initial' : 'fixed' };
   
   display: flex;
   align-items: center;
@@ -30,13 +30,13 @@ export const Container = styled.div`
 
   z-index: 6;
 
-  @media (max-width: 414px) {
+  /* @media (max-width: 414px) { */
     /* width: 100%; */
     
     /* overflow: hidden */
     /* flex-direction: column; */
     /* background-color: red; */
-  }
+  /* } */
 `;
 
 export const LeftSide = styled.div`

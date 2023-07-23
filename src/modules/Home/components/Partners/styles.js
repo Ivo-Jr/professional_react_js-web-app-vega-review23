@@ -58,7 +58,7 @@ export const DescriptionPartner = styled.p`
   display: block;
 
   width: 100%;
-  max-width: 490px;
+  max-width: 550px;
 
   padding: 0rem 3rem;
 
