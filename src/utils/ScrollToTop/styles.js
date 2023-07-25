@@ -22,4 +22,13 @@ export const ButtonToTop = styled.a`
 
         background: var(--color-wine);
     }
+
+    @media only screen and (min-width: 1900px){
+        padding: 0.8rem;
+
+        svg {
+            width: 25px;
+            height: 25px;
+        }
+    }
 `;

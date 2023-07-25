@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   width: 100%;
   max-width: 250px;
-  height: 50px;
+  height: 5rem;
 
   background: var(--color-wine);
   border-radius: 6px;
@@ -67,5 +67,14 @@ export const Container = styled.div`
 
   &:hover {
     filter: brightness(.8)
+  }
+
+  @media only screen and (min-width: 1900px){
+    height: 6rem;
+
+    a{
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
   }
 `;

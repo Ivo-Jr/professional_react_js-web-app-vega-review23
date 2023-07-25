@@ -26,7 +26,7 @@ export const Article = () => {
         </Button>
         <Button>
           <Link to="linearguides">
-            Linear Guides → What are they? how to specify them
+            Linear Guides
           </Link>
         </Button>
         <Button>

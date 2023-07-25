@@ -34,6 +34,11 @@ export const SideLeft = styled.article`
   @media only screen and (max-width: 899px){
     max-width: auto;
   }
+  
+  @media only screen and (min-width: 1900px){
+    padding: 35px 10px 0px 0px;
+    max-width: 650px;
+  }
 `;
 
 export const Subtitle = styled.h4`
@@ -51,6 +56,13 @@ export const Subtitle = styled.h4`
   
   @media only screen and (max-width: 590px){
     font-size: 2.5rem;
+  }
+  
+  @media only screen and (min-width: 1900px){
+    max-width: 530px;
+    margin-bottom: 3.5rem;
+    font-size: 4rem;
+    line-height: 5rem;
   }
 `;
 
@@ -70,6 +82,12 @@ export const Description = styled.p`
   @media only screen and (max-width: 590px){
     font-size: 1.4rem;
   }
+
+  @media only screen and (min-width: 1900px){
+    max-width: 530px;
+    font-size: 2.2rem;
+    line-height: 3rem;
+  }
 `;
 
 export const CTAButton = styled.div`
@@ -77,9 +95,11 @@ export const CTAButton = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 100%;
+  /* width: 100%;
   max-width: 210px;
-  height: 56px;
+  height: 56px; */
+  width: max-content;
+  padding: 1rem 3rem;
 
   margin: 32px 0px 60px 0px;
 
@@ -125,10 +145,18 @@ export const CTAButton = styled.div`
   &:hover {
     filter: brightness(.8)
   }
+
   @media only screen and (max-width: 590px){
     a{
       font-size: 1.2rem;
     }
+  }
+
+  @media only screen and (min-width: 1900px){
+    padding: 3rem 5rem;
+    font-size: 2.2rem;
+    width: max-content;
+    margin: 5rem 0px 60px 0px;
   }
 `;
 
@@ -146,6 +174,12 @@ export const Testimony = styled.div`
 
   @media only screen and (max-width: 590px){
     font-size: 1.4rem
+  }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 1.8rem;
+    max-width: 580px;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -179,6 +213,11 @@ export const Avatar = styled.article`
     width: 100%;
     border-radius: 50%;
   }
+
+  @media only screen and (min-width: 1900px){
+    margin: 20px 25px 20px 0px;
+    width: 35%;
+  }
 `;
 
 export const PersonInfo = styled.aside`
@@ -201,8 +240,13 @@ export const Name = styled.h4`
   font-weight: 700;
 
   @media only screen and (max-width: 599px){
-    font-sizE: 1.4rem;
+    font-size: 1.4rem;
   }
+
+  @media only screen and (min-width: 190px){
+    font-size: 2.3rem;
+  }
+
 `;
 
 export const Occupation = styled.span`
@@ -214,6 +258,10 @@ export const Occupation = styled.span`
 
   @media only screen and (max-width: 599px){
     font-sizE: 1.2rem;
+  }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 2rem;
   }
 `;
 

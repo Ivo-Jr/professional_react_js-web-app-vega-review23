@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex-direction: column;
 
-  margin: 0px;
-
   width: 100%;
-  height: calc(100vh - 223px);
+  min-height: 100%;
   
-  /* min-height: 50vh; */
-  background: var(--color-white);
+  margin: 0px;
+  padding: 19rem 0rem;
 
+  background: var(--color-white);
 `;
 
 const Form = styled.form`
@@ -26,6 +24,23 @@ const Form = styled.form`
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+
+  @media only screen and (min-width: 1900px){
+    width: 360px;
+    height: 335px;
+
+    h2 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      padding: 0.5rem 2rem;
+      height: 4rem;
+    }
+  }
 `;
 
 const Input = styled.input`
@@ -34,6 +49,14 @@ const Input = styled.input`
   width: 100%;
   border: 1px solid #cccccc;
   border-radius: 3px;
+
+  @media only screen and (min-width: 1900px){
+    padding: 1rem 4rem;
+    font-size: 2.5rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+  }
+
 `;
 
 const Button = styled.button`
@@ -47,6 +70,14 @@ const Button = styled.button`
     background-color: #FFFFFF;
     color: black;
   }
+
+  @media only screen and (min-width: 1900px){
+    padding: 1rem 4rem;
+    font-size: 2.1rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+  }
+
 `;
 
 const Login = ({ onLogin, credentials }) => {

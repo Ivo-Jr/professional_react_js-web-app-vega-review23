@@ -27,11 +27,11 @@ export const Container = styled.section`
   flex-direction: column;
 
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
   background: var(--color-background);
 
-  padding-top: 70px;
+  padding: 190px 0px;
 
 `;
 
@@ -43,7 +43,12 @@ export const ContentIntro = styled.aside`
   width: 100%;
   max-width: 1150px;
 
-  height: 100%;
+  padding: 1rem 3rem;
+  margin-bottom: 6rem;
+
+  @media only screen and (min-width: 1900px){
+    max-width: 1450px
+  }
 `;
 
 
@@ -73,6 +78,13 @@ export const WrapperText = styled.article`
     filter: brightness(.8);
     
   }
+
+  @media only screen and (min-width: 1900px){
+    p{
+      font-size: 2.2rem;
+      line-height: 3.5rem;
+    }
+  }
 `;
 
 export const CTAButton = styled.div`
@@ -84,9 +96,6 @@ export const CTAButton = styled.div`
   max-width: 200px;
   height: 50px;
 
-  margin-bottom: 80px;
-
-  
   background: var(--color-wine);
   
   border-radius: 6px;
@@ -113,6 +122,17 @@ export const CTAButton = styled.div`
 
   &:hover {
     filter: brightness(.8)
+  }
+
+  @media only screen and (min-width: 1900px){
+    width: initial;
+    max-width: initial;
+    height: initial;
+    padding: 2rem 5rem;
+
+    a{
+      font-size: 2rem;
+    }
   }
 `;
 

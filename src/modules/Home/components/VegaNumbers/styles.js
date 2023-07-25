@@ -27,6 +27,10 @@ export const Content = styled.div`
 
   margin: 20rem 0rem;
   padding: 0rem 9rem;
+
+  @media only screen and (min-width: 1900px){
+    max-width: calc(1450px + 9rem);
+  }
 `;
 
 export const Header = styled.div`
@@ -59,10 +63,20 @@ export const Title = styled.h4`
     padding: 0rem 3rem;
     margin-bottom: 3rem;
   }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 5.2rem;
+    line-height: 6.2rem;
+  }
 `;
 
 export const ImgTitle = styled.img`
   width: 250px;
+
+  @media only screen and (max-width: 780px){
+    width: 300px;
+  }
+
 `;
 
 export const Wrapper = styled.ul`
@@ -76,12 +90,16 @@ export const Wrapper = styled.ul`
   @media only screen and (max-width: 691px){
     justify-content: center;
   }
-
+  
+  @media only screen and (min-width: 1900px){
+    max-width: calc(1450px + 9rem);
+  }
 `;
 
 export const NumbersItem = styled.li`
   width: 100%;
   max-width: 256px;
+  list-style: none;
   
   div {
     display: flex;
@@ -123,5 +141,10 @@ export const NumbersItem = styled.li`
 
   @media only screen and (max-width: 691px){
     margin-bottom: 5rem;
+  }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 6.2rem;
+    line-height: 6.8rem;
   }
 `;

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
     width: 100%;
-    height: calc(100% - 130px);
+    min-height: 100%;
+
+    padding: 19rem 2rem;
 
     background: var(--color-white);
 `;
@@ -12,11 +14,8 @@ export const Content = styled.div`
     justify-content: center;
     flex-direction: column;
     
-    padding: 3rem 2rem 2rem;
-    
     width: 100%;
     max-width: 1150px;
-    height: 100%;
 `;
 
 export const Text = styled.div`
@@ -24,6 +23,11 @@ export const Text = styled.div`
 
     font-size: 3rem;
     font-weight: bold;
+
+    @media only screen and (min-width: 1900px){
+        font-size: 4rem;
+        margin-bottom: 3rem;
+    }
 `;
 
 export const Form = styled.form`
@@ -87,12 +91,41 @@ export const Form = styled.form`
         cursor: pointer;
         border-radius: 0.5rem;
     
-    &:hover{
-        background-color: #ccc;
-        color: black;
-        transition: 1s;
+        &:hover{
+            background-color: #ccc;
+            color: black;
+            transition: 1s;
+        }
+    
     }
-}
+
+    @media only screen and (min-width: 1900px){
+        max-width: 1050px;
+
+        select {
+            margin: 1.5rem 0rem;
+            /* height: 5rem; */
+            font-size: 2.1rem;
+        }
+
+        input {
+            height: 5rem;
+            font-size: 2.1rem;
+        }
+
+        textarea {
+            font-size: 2.1rem;
+            min-width: 100%;
+            margin-bottom: 4rem
+        }
+
+        button {
+            font-size: 2rem;
+            padding: 2rem 5rem;
+            width: max-content;
+            max-width: initial;
+        }
+    }
 `;
 
 

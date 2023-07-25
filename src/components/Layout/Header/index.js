@@ -3,17 +3,19 @@ import { Link, useLocation } from 'react-router-dom';
 import * as S from './styles';
 
 import logo from '../../../assets/vega-header.svg';
+import logoMobile from "../../../assets/logo-mobile-VEGA.png";
 // import whatsapp from '../../assets/whatsapp.png';
 
 import { FiUser } from "react-icons/fi";
+import MenuListComposition from '../../Menu';
 
 function Header() {
   const menuRef = useRef();
   const { pathname } = useLocation();
-  
-  const [ menuOpen, setMenuOpen ] = useState(false);
-  const [ scroll, setScroll ] = useState(false);
-  const [ initialPosition, setinitialPosition ] = useState(false);
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scroll, setScroll] = useState(false);
+  const [initialPosition, setinitialPosition] = useState(false);
 
   const filledRoutes = useMemo(() => {
     return (
@@ -40,7 +42,7 @@ function Header() {
     const result = pathname.includes("visionsystem");
 
     setinitialPosition(result);
-  },[pathname])
+  }, [pathname])
 
   const handleClickOutside = useCallback((event) => {
     if (menuOpen && !menuRef.current.contains(event.target)) {
@@ -80,7 +82,7 @@ function Header() {
 
   useEffect(() => {
     handlePath()
-  },[handlePath])
+  }, [handlePath])
 
   return (
     <>
@@ -88,25 +90,28 @@ function Header() {
       <S.Container $initialposition={initialPosition} scroll={scroll ? 1 : 0}>
 
         <S.LeftSide>
-          <a href="/">
+          <a className='WebLogo' href="/">
             <img src={logo} alt="VegaRobotics" id="logo" />
           </a>
+
+          <a className='MobileLogo' href="/">
+            <img src={logoMobile} alt="VegaRobotics" id="logo" />
+          </a>
+
+          <div className="menuHamburguer">
+            <MenuListComposition />
+          </div>
         </S.LeftSide>
 
+
         <S.CenterSide menuopen={menuOpen ? 1 : 0} ref={menuRef}>
-          {/* <Link to="/">Home</Link> */}
           <a href="/">Home</a>
           <Link to="/technology">Techonology</Link>
           <Link to="/engineering">Engineering</Link>
-          {/* <Link to="/">Robotics</Link> */}
           <Link to="/algorithms">Algorithms</Link>
           <Link to="/articles">Articles</Link>
           <Link to="/budget">Contact</Link>
           <Link to="/forms">Forms</Link>
-          {/* <a href="https://rwelectrodes.com/" target="_blank" rel="noreferrer" >
-          <span>Shop</span>
-        </a> */}
-          {/* <Link to="/vixem">BETA</Link> */}
           <S.CloseButton onClick={toggleMenu}>&times;</S.CloseButton>
         </S.CenterSide>
 
@@ -122,11 +127,11 @@ function Header() {
             </span>
           </a>
 
-          <S.Hamburger onClick={toggleMenu}>
+          {/* <S.Hamburger onClick={toggleMenu}>
             <span></span>
             <span></span>
             <span></span>
-          </S.Hamburger>
+          </S.Hamburger> */}
         </S.RightSide>
 
       </S.Container>

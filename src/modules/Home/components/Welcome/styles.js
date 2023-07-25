@@ -2,17 +2,12 @@ import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.main`
   width: 100%;
-  /* height: calc(100vh - 95px); */
-  /* height: 100%; */
-
-  /* padding-top: 95px; */
-  /* position: relative; */
-  /* top: 95px; */
 `;
 
 export const Content = styled.section`
   width: 100%;
-  height: 1000px;
+  min-height: 100%;
+  padding: 190px 0px;
 
   position: relative;
 
@@ -58,13 +53,11 @@ export const Title = styled.h1`
   max-width: 900px;
   height: auto;
 
-  margin-top: -110px;
-
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   
   text-align: center;
-  font-size: 46px;
-  line-height: 60px;
+  font-size: 4.6rem;
+  line-height: 6rem;
   
   color: var(--color-white);
 
@@ -77,6 +70,15 @@ export const Title = styled.h1`
   @media only screen and (max-width: 590px){
     font-size: 4rem;
     margin-bottom: 3.5rem;
+  }
+
+  @media only screen and (min-width: 1900px){
+    max-width: 1000px;
+
+    margin-bottom: 4rem;
+
+    font-size: 6rem;
+    line-height: 7rem;
   }
 `;
 
@@ -103,6 +105,12 @@ export const SubTitle = styled.h2`
   @media only screen and (max-width: 590px){
     font-size: 1.4rem;
     line-height: 2.3rem;
+  }
+
+  @media only screen and (min-width: 1900px){
+    max-width: 1300px;
+    margin-bottom: 7.5rem;
+    font-size: 2.2rem;
   }
 `;
 
@@ -155,9 +163,7 @@ export const CTAButton = styled.a`
   justify-content: center;
   align-items: center;
 
-  width: 100%;
-  max-width: 200px;
-  height: 50px;
+  padding: 1rem 2rem;
 
   background: var(--color-wine);
   
@@ -194,6 +200,11 @@ export const CTAButton = styled.a`
 
   &:hover {
     filter: brightness(.8)
+  }
+
+  @media only screen and (min-width: 1900px){
+    padding: 3rem 5rem;
+    font-size: 2.5rem;
   }
 `;
 
