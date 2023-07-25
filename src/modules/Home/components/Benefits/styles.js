@@ -17,13 +17,13 @@ const fadeIn = keyframes`
 export const Container = styled.section`
   display: flex;
   align-items: center;
-
   flex-direction: column;
 
   position: relative;
 
   width: 100%;
-  
+  min-height: calc(100% - 95px);
+
   padding: 160px 0px;
 
   background: #0C0D0F;
@@ -49,6 +49,11 @@ export const TitleBenefit = styled.h3`
   @media only screen and (max-width: 470px){
     font-size: 3.7rem;
   }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 5.3rem;
+    line-height: 6.2rem;
+  }
 `;
 
 export const Wrapper = styled.ul`
@@ -63,34 +68,7 @@ export const Wrapper = styled.ul`
 
   margin-top: 70px;
    
-
-  /* li:nth-child(1) {
-    animation: ${fadeIn} 1s forwards;
-    animation-delay: 1s;
+  @media only screen and (min-width: 1900px){
+    max-width: 1450px;
   }
-  
-  li:nth-child(2) {
-    animation: ${fadeIn} 1s forwards;
-    animation-delay: 1.2s;
-  }
- 
-  li:nth-child(3) {
-    animation: ${fadeIn} 1s forwards;
-    animation-delay: 1.3s;
-  }
-
-  li:nth-child(4) {
-    animation: ${fadeIn} 1s forwards;
-    animation-delay: 1.5s;
-  }
-
-  li:nth-child(5) {
-    animation: ${fadeIn} 1s forwards;
-    animation-delay: 1.6s;
-  }
-
-  li:nth-child(6) {
-    animation: ${fadeIn} 1s forwards;
-    animation-delay: 1.7s;
-  } */
 `;

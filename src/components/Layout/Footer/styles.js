@@ -12,7 +12,6 @@ export const Container = styled.section`
     border-top: 1px solid rgb(61, 61, 64);
 
     @media only screen and (max-width: 580px){
-        /* padding: 0rem 9rem 0rem 3rem; */
         height: auto;
     }
 `;
@@ -25,32 +24,15 @@ export const Content = styled.div`
     padding: 0rem 9rem;
 
     width: 100%;
-    max-width: calc(1150px + 9rem);
 
-    @media only screen and (max-width: 580px){
-        padding: 0rem 9rem 0rem 3rem;
+    @media only screen and (max-width: 740px){
+        padding: 0rem 3rem;
         margin: 1rem 0rem;
     }
 
-
-      // sm
-    /* @media only screen and (max-width: 768px){
-        max-width: 500px;
+    @media only screen and (min-width: 1900px){
+        padding: 0rem 10rem;
     }
-
-    //md
-    @media only screen and (min-width: 769px) and (max-width: 1024px){
-        max-width: 600px;
-    }
-    
-    //lg
-    @media only screen and (min-width: 1025px){
-        max-width: 640px;
-
-        width: 50%;
-    } */
-
-
 `;
 
 export const WrapperIcons = styled.ul``;
@@ -95,6 +77,19 @@ export const Icons = styled.li`
     @media only screen and (max-width: 580px){
         margin-right: 1rem;
     }
+
+    @media only screen and (min-width: 1900px){
+        a {
+            padding: 1rem;
+            margin: 1rem;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
 `;
 
 export const WrapperRights = styled.aside`
@@ -115,4 +110,9 @@ export const Rights = styled.p`
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
+
+    @media only screen and (min-width: 1900px){
+        font-size: 1.8rem;
+        line-height: 2.6rem;   
+    }
 `;

@@ -37,6 +37,10 @@ export const Content = styled.div`
   max-width: 1150px;
 
   margin: 10rem 0rem;
+
+  @media only screen and (min-width: 1900px){
+    max-width: 1450px;
+  }
 `;
 
 export const TitlePartner = styled.h3`
@@ -51,6 +55,12 @@ export const TitlePartner = styled.h3`
 
   @media only screen and (max-width: 580px){
     font-size: 4rem
+  }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 5.2rem;
+    line-height: 6rem;
+    margin-bottom: 3rem;
   }
 `;
 
@@ -69,6 +79,12 @@ export const DescriptionPartner = styled.p`
 
   @media only screen and (max-width: 580px){
     font-size: 1.3rem;
+  }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 2rem;
+    line-height: 3rem;
+    max-width: 650px;
   }
 `;
 
@@ -98,5 +114,19 @@ export const WrapperItem = styled.ul`
       width: 200px;
       height: auto;
     }
+  }
+
+  @media only screen and (min-width: 1900px){
+    li {
+      margin: 20px;
+
+      img {
+        width: 250px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1900px){
+    max-width: inherit;
   }
 `;

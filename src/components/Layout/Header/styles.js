@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  position: ${props => props.$initialposition ? 'initial' : 'fixed' };
+  position: ${props => props.$initialposition ? 'initial' : 'fixed'};
   
   display: flex;
   align-items: center;
@@ -16,6 +16,10 @@ export const Container = styled.div`
 
   background: transparent;
   border-bottom: none;
+
+  .menuHamburguer{
+    display: none;
+  }
   
   ${props => props.scroll ?
     css`
@@ -30,13 +34,15 @@ export const Container = styled.div`
 
   z-index: 6;
 
-  /* @media (max-width: 414px) { */
-    /* width: 100%; */
-    
-    /* overflow: hidden */
-    /* flex-direction: column; */
-    /* background-color: red; */
-  /* } */
+  @media only screen and (max-width: 850px){
+    .menuHamburguer{
+      display: inherit;
+    }
+  }
+
+  @media (min-width: 1900px){
+    height: 120px;
+  }
 `;
 
 export const LeftSide = styled.div`
@@ -49,86 +55,95 @@ export const LeftSide = styled.div`
   max-width: 150px;
   width: 100%;
 
-    img {
-      width: 150px;
-      &:hover{
+  .MobileLogo{
+    display: none;
+  }
+  
+  img {
+    width: 150px;
+    
+    &:hover{
       transform: scale(1.05);
       opacity: 20;
       transition: 1s;
     }
   }
 
-  @media (max-width: 414px){
-      #logo {
-          width: 100%;
-          justify-content: center;
-          margin-left: 75px;
-          height: 100%;
+  @media (max-width: 850px){
+    width: initial;
+    max-width: initial;
+
+    .MobileLogo{
+      display: initial;
+
+      img {
+        width: 50px;
+        height: 50px;
       }
+    }
+    
+    .WebLogo{
+      display: none
+    }
+  }
+
+  @media (min-width: 1900px){
+    max-width: initial;
+    width: initial;
+  
+    img{
+      width: 190px;
+    }
   }
 `;
 
 export const CenterSide = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 785px;
+  width: 100%;
+  height: 100%;
+
+  padding: 0px 1rem;
+
+  font-size: 14px;
+
+  a {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
-    max-width: 785px;
-    width: 100%;
+    position: relative;
 
     height: 100%;
+    width: fit-content;
 
-    padding: 0px 1rem;
+    margin: 0rem 0.4rem;
 
-    font-size: 14px;
+    color: var(--color-white);
+    font-weight: bold;
+    text-decoration: none;
 
+    opacity: .6;
+
+    white-space: nowrap; 
+    /* overflow: hidden;  */
+    /* text-overflow: ellipsis;  */
+
+    transition: all 0.3s ease;
     
-    a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    &:hover{
+      opacity: 1;
 
-      position: relative;
-
-      height: 100%;
-      width: fit-content;
-
-      margin: 0rem 0.4rem;
-
-      color: var(--color-white);
-      font-weight: bold;
-      text-decoration: none;
-
-      opacity: .6;
-
-      white-space: nowrap; 
-      /* overflow: hidden;  */
-      /* text-overflow: ellipsis;  */
-
-      transition: all 0.3s ease;
-      
-      &:hover{
-        opacity: 1;
-
-        border-bottom: 2px solid var(--color-wine);
-      }
-
+      border-bottom: 2px solid var(--color-wine);
     }
 
+  }
 
-    /* @media (max-width: 414px) {
-        width: 100%;
-        margin-right: 0;
-        justify-content: center;
-    } */
-    @media (max-width: 1300px) {
-        /* width: 100%; */
-        /* background-color: red; */
-        /* margin-right: 80px; */
-        /* justify-content: center; */
-    }
 
-    @media (max-width: 414px) {
+  @media (max-width: 414px) {
     position: fixed;
     top: 0;
     left: ${(props) => (props.menuopen ? '0' : '-100%')};
@@ -144,6 +159,16 @@ export const CenterSide = styled.div`
     gap: 20px;
     z-index: 1000;
   }
+
+  @media (min-width: 1900px) {
+    max-width: 1000px;
+    margin: 0rem 1rem;
+    font-size: 2.1rem;
+  }
+
+  @media only screen and (max-width: 850px){
+    display: none;
+    }
 `;
 
 export const RightSide = styled.div`
@@ -217,60 +242,29 @@ export const RightSide = styled.div`
       }
     }
 
+    @media only screen and (min-width: 1900px){
+      a{
+        svg {
+          width: 25px;
+          height: 25px;
+        }
 
-    /* &:hover {
-      opacity: 1;
-    } */
+        span {
+          font-size: 1.7rem;
+          margin-left: 1rem;
+        }
+      }
+    }
 
+    @media only screen and (max-width: 850px){
+      width: initial;
 
-    /* img { */
-      /* width: 45px; */
-      /* padding-top: 0px; */
-      /* padding-right: 30px; */
-      /* @media (max-width: 414px) {
+      a {
+        span{
           display: none;
-      } */
-      /* &:hover{
-        transform: scale(1.1);
-        opacity: 20;
-        transition: 1s;
-      } */
-    /* } */
-/* 
-    button {
-        background: none;
-        border: none;
-        cursor: pointer;
+        }
+      }
     }
-
-    a, button {
-        color: var(--color-white);
-        font-weight: bold;
-        text-decoration: none;
-        margin: 0 10px;
-
-    &:hover{
-        transition: opacity .3s;
-    }
-
-    span {
-        background: var(--color-white);
-        color: var(--color-wine);
-        padding: 3px 7px;
-        border-radius: 50%50%;
-        position: relative;
-        top: -20px;
-        right: 10px;
-    }
-    
-    }
-    @media (max-width: 414px) {
-    width: 100%;
-    justify-content: center;
-    img {
-      display: none;
-    }
-  } */
 `;
 
 export const CloseButton = styled.button`

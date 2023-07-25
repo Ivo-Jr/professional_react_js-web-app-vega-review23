@@ -108,6 +108,12 @@ export const Subtitle = styled.h2`
         line-height: 4.8rem;
         margin: 2.4rem 0rem;
     }
+    
+    @media only screen and (min-width: 1900px){
+        max-width: 1293px;
+        font-size: 4.5rem;
+    }
+
 `;
 
 export const SText = styled.div`

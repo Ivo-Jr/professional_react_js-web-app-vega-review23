@@ -14,6 +14,10 @@ export const BenefitContent = styled.li`
   margin: 10px;
 
   /* opacity: 0; */
+
+  @media only screen and (min-width: 1900px){
+    margin: 20px
+  }
 `;
 
 export const BenefitImg = styled.img`
@@ -37,6 +41,11 @@ export const BenefitSubtitle = styled.h4`
   @media only screen and (max-width: 470px){
     font-size: 2.3rem;
   }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 3.1rem;
+    line-height: 38px;
+  }
 `;
 
 export const BenefitDescription = styled.p`
@@ -50,5 +59,10 @@ export const BenefitDescription = styled.p`
   
   @media only screen and (max-width: 470px){
     font-size: 1.4rem;
+  }
+  
+  @media only screen and (min-width: 1900px){
+    line-height: 3rem;
+    font-size: 1.9rem;
   }
 `;

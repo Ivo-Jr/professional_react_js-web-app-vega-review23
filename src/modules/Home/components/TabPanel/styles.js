@@ -34,6 +34,10 @@ export const Content = styled.div`
   @media only screen and (max-width: 590px){
     padding: 0rem 3rem;
   }
+
+  @media only screen and (min-width: 1900px){
+    max-width: calc(1450px + 9rem);
+  }
 `;
 
 export const Tab = styled.ul`
@@ -103,8 +107,6 @@ export const Tab = styled.ul`
   }
   }
   }
-
-
 `;
 
 export const Switch = styled.li`
@@ -147,9 +149,18 @@ export const Switch = styled.li`
     font-size: 1.8rem;
 
     & + li {
-    margin-left: 2rem;
-    padding-left: 0.5rem;
+      margin-left: 2rem;
+      padding-left: 0.5rem;
+    }
   }
+
+  @media only screen and (min-width: 1900px){
+    font-size: 3.5rem;
+
+    & + li {
+      font-size: 3.5rem;
+      margin-left: 6rem;
+    }
   }
 `;
 
