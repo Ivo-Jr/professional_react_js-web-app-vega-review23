@@ -402,6 +402,10 @@ export const StyledCanvas = styled.canvas`
   top: 0;
   left: 0;
   z-index: 1;
+
+  @media only screen and (max-width: 1000px){
+    display: none;
+  }
 `;
 
 export const Modal = styled.div`

@@ -26,21 +26,21 @@ export const Text = styled.h1`
   font-size: 3.5rem;
   color: var(--color-white);
   font-weight: none;
-  line-height: 0;
 `
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;   
 
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  padding: 190px 0px;
 
   background-color: var(--color-background);
   ${commonStyles}
-  ${responsiveStyles}
+  /* ${responsiveStyles} */
 `;
 
 export const CardsWrapper = styled.div`

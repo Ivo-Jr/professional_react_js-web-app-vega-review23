@@ -46,7 +46,7 @@ export default function MenuListComposition() {
   }, [open]);
 
   return (
-    <Stack direction="row" spacing={2}>
+    <Stack direction="row" sx={{ zIndex: "2" }} spacing={2}>
       <div>
         <Button
           ref={anchorRef}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,8 @@ export const Container = styled.div`
     flex-direction: column;
 
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    padding: 19rem 0rem;
 
     background: var(--color-background);
     
@@ -23,11 +24,17 @@ export const Text = styled.h1`
     font-size: 1.8em;
     line-height: 0;
     text-decoration: none;
+
+    @media only screen and (min-width: 1900px){
+        font-size: 3rem;
+        margin-bottom: 6rem;
+    }
 `;
 
 export const Controllers = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     
     width: 100%;
     max-width: 1150px;
