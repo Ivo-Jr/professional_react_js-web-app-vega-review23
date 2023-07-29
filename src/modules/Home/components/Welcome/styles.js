@@ -2,11 +2,12 @@ import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.main`
   width: 100%;
+  min-height: 100%;
+  display: flex;
 `;
 
 export const Content = styled.section`
   width: 100%;
-  min-height: 100%;
   padding: 190px 0px;
 
   position: relative;

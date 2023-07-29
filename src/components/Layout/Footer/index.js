@@ -35,7 +35,7 @@ export const Footer = () => {
             <a href="mailto:contato@vegarobotics.com.br">
               <IoMdMail />
             </a>
-            <Link to="/algoritmos">
+            <Link to="/algorithms">
               <FaCode />
             </Link>
           </Icons>
