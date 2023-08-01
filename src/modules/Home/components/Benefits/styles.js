@@ -1,18 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const fadeIn = keyframes`
-  0%{
-    transform: translate(0px, 30px);
-    opacity: 0;
-  }
-  50%{
-    opacity: .3;
-  }
-  100%{
-    transform: translate(0px, 0px);
-    opacity: 1;
-  }
-`;
+import styled from 'styled-components';
 
 export const Container = styled.section`
   display: flex;

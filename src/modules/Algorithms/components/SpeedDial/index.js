@@ -20,8 +20,8 @@ const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
 }));
 
 export default function PlaygroundSpeedDial({ actionObject }) {
-  const [direction, setDirection] = React.useState('right');
-  const [hidden, setHidden] = React.useState(false);
+  const direction = 'right';
+  const hidden = false;
 
   return (
     <Box sx={{
