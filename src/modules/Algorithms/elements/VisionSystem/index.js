@@ -558,7 +558,7 @@ function VisionSystem() {
                         onPredictions={handlePredictions}
                       />
 
-                      {/* <S.StyledCanvas ref={canvasRef} /> */}
+                      <S.StyledCanvas ref={canvasRef} />
                     </S.WebcamWrapper>
                   </>
 
@@ -575,7 +575,7 @@ function VisionSystem() {
                   <>
                     <S.CapturedImage>
                       <S.WrapperTitle>
-                        <S.Title>Captured Image2</S.Title>
+                        <S.Title>Captured Image</S.Title>
                       </S.WrapperTitle>
                       {/* <p>Stored image for comparison.</p> */}
                       <img
