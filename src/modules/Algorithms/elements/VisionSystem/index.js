@@ -173,6 +173,8 @@ function VisionSystem() {
 
     message += ` Images are ${diffPercentageAdjusted.toFixed(2)}% different. Status: ${status}.`;
 
+    // setConsoleData((prevState) => [...prevState, { message, date: currentDate, time: currentTime, status }]);
+
     setConsoleData((prevState) => {
       let newConsoleData = [...prevState];
       const lastIndex = newConsoleData.length - 1;
@@ -369,6 +371,7 @@ function VisionSystem() {
     setSavedImage(null);
   }, []);
 
+
   return (
     <S.Container>
       {!isLoggedIn ? (
@@ -432,18 +435,20 @@ function VisionSystem() {
                           </S.CapturedImage>
 
                           <S.CapturedImage>
-                            <S.WrapperTitle>
-                              <S.Title>Result</S.Title>
-                            </S.WrapperTitle>
-                            <S.ResultantImage>
-                              {diffImage && (
-                                <img
-                                  src={diffImage}
-                                  className={imageClassName}
-                                  alt="Comparison Result"
-                                />
-                              )}
-                            </S.ResultantImage>
+                            {diffImage && (
+                              <>
+                                <S.WrapperTitle>
+                                  <S.Title>Result</S.Title>
+                                </S.WrapperTitle>
+                                <S.ResultantImage>
+                                  <img
+                                    src={diffImage}
+                                    className={imageClassName}
+                                    alt="Comparison Result"
+                                  />
+                                </S.ResultantImage>
+                              </>
+                            )}
                           </S.CapturedImage>
                         </section>
 
@@ -469,7 +474,7 @@ function VisionSystem() {
                       </S.ImageResultComponent>
 
                       {/* <ObjectDetectionResults objectDetectionResults={predictions} /> */}
-                      <section >
+                      <section>
                         <S.ContainerSpeed>
                           <PlaygroundSpeedDial
                             actionObject={actionsObject}
@@ -525,7 +530,7 @@ function VisionSystem() {
                         <ObjectDetectionResults predictions={predictions} />
                         <Webcam
                           ref={webcamRef}
-                          mirrored
+                          mirrored={facingMode === 'environment'}
                           videoConstraints={videoConstraints}
                         />
 
@@ -538,13 +543,13 @@ function VisionSystem() {
                         onPredictions={handlePredictions}
                       />
 
-                      <S.StyledCanvas ref={canvasRef} />
+                      {/* <S.StyledCanvas ref={canvasRef} /> */}
                     </S.WebcamWrapper>
                   </>
 
                 </S.RealTimeImage>
 
-                <S.ConsoleWeb style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                <S.ConsoleWeb>
                   <Console consoleData={consoleData} />
                 </S.ConsoleWeb>
               </S.WrapperMain>
@@ -562,19 +567,19 @@ function VisionSystem() {
                   />
                 </S.CapturedImage>
 
-                <S.ResultantImage>
-                  <S.WrapperTitle>
-                    <S.Title>Result</S.Title>
-                  </S.WrapperTitle>
-                  {/* <p>See comparison results here.</p> */}
-                  {diffImage && (
+                {diffImage && (
+                  <S.ResultantImage>
+                    <S.WrapperTitle>
+                      <S.Title>Result</S.Title>
+                    </S.WrapperTitle>
+                    {/* <p>See comparison results here.</p> */}
                     <img
                       src={diffImage}
                       className={imageClassName}
                       alt="Comparison Result"
                     />
-                  )}
-                </S.ResultantImage>
+                  </S.ResultantImage>
+                )}
 
                 {modal && (
                   <div className="modal">

@@ -205,9 +205,12 @@ export const InnerRight = styled.div`
 export const ImageResultComponent = styled.div`
   display: flex;
 
-  
   @media only screen and (max-width: 600px) {
     flex-direction:  column;
+  }
+
+  @media only screen and (max-width: 800px) {
+    justify-content: center;
   }
 
   @media only screen and (min-width: 801px) {
@@ -254,9 +257,9 @@ export const ObjectDetectionResultItem = styled.li`
 `;
 
 export const WebcamWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: contents;
+  /* justify-content: center; */
+  /* align-items: center; */
 
   height: 100%;
   width: 100%;
@@ -313,6 +316,7 @@ export const ObjectDetectionResultsList = styled.ul`
 `;
 
 export const ConsoleWeb = styled.article`
+  display: flex;
   height: 100%;
   max-height: 200px;
   min-height: 110px;
