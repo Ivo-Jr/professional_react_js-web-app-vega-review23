@@ -17,13 +17,13 @@ const BoasPraticasProjetos = (props) => {
   const [currentSlide, setCurrentSlide] = useState(0); // gerenciando o estado atual do slide
 
   const paragraphs = [
-    <img src={image1} className="image1" alt="image1" width="40%" height="40%" />,
-    <img src={image2} className="image1" alt="image1" width="40%" height="40%" />,
-    <img src={image3} className="image1" alt="image1" width="40%" height="40%" />,
-    <img src={image4} className="image1" alt="image1" width="40%" height="40%" />,
-    <img src={image5} className="image1" alt="image1" width="40%" height="40%" />,
-    <img src={image6} className="image1" alt="image1" width="40%" height="40%" />,
-    <img src={image7} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image1" src={image1} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image2" src={image2} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image3" src={image3} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image4" src={image4} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image5" src={image5} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image6" src={image6} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image7" src={image7} className="image1" alt="image1" width="40%" height="40%" />,
   ];
 
   const settings = {

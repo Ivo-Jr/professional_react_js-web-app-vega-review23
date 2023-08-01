@@ -15,11 +15,11 @@ const GrabCad = (props) => {
   const [currentSlide, setCurrentSlide] = useState(0); // gerenciando o estado atual do slide
 
   const paragraphs = [
-    <img src= {image10} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image11} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image12} className="image1" alt="image1" width="40%" height="40%"/>, 
+    <img key="image10" src={image10} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image11" src={image11} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="image12" src={image12} className="image1" alt="image1" width="40%" height="40%" />,
     // <img src= {image23} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image14} className="image1" alt="image1" width="40%" height="40%"/>, 
+    <img key="image14" src={image14} className="image1" alt="image1" width="40%" height="40%" />,
   ];
 
   const settings = {
@@ -35,13 +35,13 @@ const GrabCad = (props) => {
 
   return (
     <S.Container>
-            <Helmet>
-                <title>GRABCAD → O que? Para que serve?</title>
-                <meta name="description" content="Engenharia Atual" />
-                <meta name="keywords" content="engenharia, engenharia atual, como ganhar dinheiro com a engenharia, engenharia século 21, engenharia moderna, sucesso na engenharia, consultoria em engenharia"/>
-                <meta name="author" content="Vega Robotics" />
-            </Helmet>
-            <h1>GRABCAD → O que? Para que serve?</h1>
+      <Helmet>
+        <title>GRABCAD → O que? Para que serve?</title>
+        <meta name="description" content="Engenharia Atual" />
+        <meta name="keywords" content="engenharia, engenharia atual, como ganhar dinheiro com a engenharia, engenharia século 21, engenharia moderna, sucesso na engenharia, consultoria em engenharia" />
+        <meta name="author" content="Vega Robotics" />
+      </Helmet>
+      <h1>GRABCAD → O que? Para que serve?</h1>
       <Slider {...settings}>
         {paragraphs.map((paragraph, index) => (
           <div key={index}>
