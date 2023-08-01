@@ -41,11 +41,18 @@ function VisionSystem() {
   const [useLocalStorage, setUseLocalStorage] = useState(false);
   // eslint-disable-next-line
   const [approvedRange, setApprovedRange] = useState([0, 10]);
-  const [facingMode, setFacingMode] = useState('environment');
+  const [facingMode, setFacingMode] = useState('user');
   // const modalText = diffPercentage && diffPercentage >= 95 ? "Aprovado" : "Reprovado";
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [objectDetectionResults, setObjectDetectionResults] = useState([]);
   const [open, setOpen] = useState(false);
+  const [storageImage, setStorageImage] = useState(() => {
+    const storage = localStorage.getItem("webcamImage");
+
+    if (storage) {
+      return storage
+    }
+  });
 
   const credentials = {
     client: "VIXEM",
@@ -424,15 +431,17 @@ function VisionSystem() {
                     <S.WebcamWrapper>
                       <S.ImageResultComponent>
                         <section className="captures-section">
-                          <S.CapturedImage>
-                            <S.WrapperTitle>
-                              <S.Title>Captured Image</S.Title>
-                            </S.WrapperTitle>
-                            <img
-                              src={localStorage.getItem("webcamImage")}
-                              alt="Captured-Webcam-Image"
-                            />
-                          </S.CapturedImage>
+                          {storageImage && (
+                            <S.CapturedImage>
+                              <S.WrapperTitle>
+                                <S.Title>Captured Image</S.Title>
+                              </S.WrapperTitle>
+                              <img
+                                src={localStorage.getItem("webcamImage")}
+                                alt="Captured-Webcam-Image"
+                              />
+                            </S.CapturedImage>
+                          )}
 
                           <S.CapturedImage>
                             {diffImage && (
@@ -482,15 +491,20 @@ function VisionSystem() {
                         </S.ContainerSpeed>
 
                         <S.InnerRight>
-                          <S.WrapperTitle style={{ background: "#333" }}>
-                            <S.Title>Captured Image</S.Title>
-                          </S.WrapperTitle>
-                          <S.CapturedImage>
-                            <img
-                              src={localStorage.getItem("webcamImage")}
-                              alt="Captured-Webcam-Image"
-                            />
-                          </S.CapturedImage>
+                          {storageImage && (
+                            <>
+                              <S.WrapperTitle style={{ background: "#333" }}>
+                                <S.Title>Captured Image</S.Title>
+                              </S.WrapperTitle>
+                              <S.CapturedImage>
+                                <img
+                                  src={localStorage.getItem("webcamImage")}
+                                  alt="Captured-Webcam-Image"
+                                />
+                              </S.CapturedImage>
+                            </>
+                          )}
+
                           {diffImage && (
                             <>
                               <S.WrapperTitle style={{ background: "#333" }}>
@@ -530,7 +544,7 @@ function VisionSystem() {
                         <ObjectDetectionResults predictions={predictions} />
                         <Webcam
                           ref={webcamRef}
-                          mirrored={facingMode === 'environment'}
+                          mirrored={facingMode === 'user'}
                           videoConstraints={videoConstraints}
                         />
 
@@ -556,16 +570,20 @@ function VisionSystem() {
 
 
               <S.WrapperSecondary>
-                <S.CapturedImage>
-                  <S.WrapperTitle>
-                    <S.Title>Captured Image</S.Title>
-                  </S.WrapperTitle>
-                  {/* <p>Stored image for comparison.</p> */}
-                  <img
-                    src={localStorage.getItem("webcamImage")}
-                    alt="Captured-Webcam-Image"
-                  />
-                </S.CapturedImage>
+                {storageImage && (
+                  <>
+                    <S.CapturedImage>
+                      <S.WrapperTitle>
+                        <S.Title>Captured Image</S.Title>
+                      </S.WrapperTitle>
+                      {/* <p>Stored image for comparison.</p> */}
+                      <img
+                        src={localStorage.getItem("webcamImage")}
+                        alt="Captured-Webcam-Image"
+                      />
+                    </S.CapturedImage>
+                  </>)}
+
 
                 {diffImage && (
                   <S.ResultantImage>
