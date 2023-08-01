@@ -27,6 +27,7 @@ function VisionSystem() {
   const [modal, setModal] = useState(false);
   const [webcamImage, setWebcamImage] = useState(null);
   const [objectDetectionActivated, setObjectDetectionActivated] = useState(false);
+  // eslint-disable-next-line
   const [modalMessage, setModalMessage] = useState("");
   const [predictions, setPredictions] = useState([]);
   const [consoleData, setConsoleData] = useState([]);
@@ -34,9 +35,11 @@ function VisionSystem() {
   const [diffImage, setDiffImage] = useState(null);
   const [diffPercentage, setDiffPercentage] = useState(null);
   const [toleranceLevel, setToleranceLevel] = useState(100);
+  // eslint-disable-next-line
   const [directory, setDirectory] = useState("");
   const [localStorageImage, setLocalStorageImage] = useState(null);
   const [useLocalStorage, setUseLocalStorage] = useState(false);
+  // eslint-disable-next-line
   const [approvedRange, setApprovedRange] = useState([0, 10]);
   const [facingMode, setFacingMode] = useState('environment');
   // const modalText = diffPercentage && diffPercentage >= 95 ? "Aprovado" : "Reprovado";
@@ -136,6 +139,7 @@ function VisionSystem() {
     );
 
     const diffPercentageAdjusted = (diffPixels / (img1.width * img1.height)) * 100;
+    // eslint-disable-next-line
     const [minRange, maxRange] = approvedRange;
     const toleranceLevel = 100 - ((diffPercentageAdjusted / maxRange) * 100);
 
