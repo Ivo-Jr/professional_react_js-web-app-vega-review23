@@ -22,18 +22,18 @@ const GuiasLineares = (props) => {
   const [currentSlide, setCurrentSlide] = useState(0); // gerenciando o estado atual do slide
 
   const paragraphs = [
-    <img src= {image40} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image41} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image42} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image43} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image44} className="image1" alt="image1" width="40%" height="40%"/>, 
+    <img key="40" src={image40} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="41" src={image41} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="42" src={image42} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="43" src={image43} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="44" src={image44} className="image1" alt="image1" width="40%" height="40%" />,
     // <img src= {image45} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image46} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image47} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image48} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image49} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image50} className="image1" alt="image1" width="40%" height="40%"/>, 
-    <img src= {image51} className="image1" alt="image1" width="40%" height="40%"/>, 
+    <img key="46" src={image46} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="47" src={image47} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="48" src={image48} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="49" src={image49} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="50" src={image50} className="image1" alt="image1" width="40%" height="40%" />,
+    <img key="51" src={image51} className="image1" alt="image1" width="40%" height="40%" />,
   ];
 
   const settings = {
@@ -49,13 +49,13 @@ const GuiasLineares = (props) => {
 
   return (
     <S.Container>
-            <Helmet>
-                <title>Guias Lineares → O que são e como especificar</title>
-                <meta name="description" content="Engenharia Atual" />
-                <meta name="keywords" content="engenharia, engenharia atual, como ganhar dinheiro com a engenharia, engenharia século 21, engenharia moderna, sucesso na engenharia, consultoria em engenharia"/>
-                <meta name="author" content="Vega Robotics" />
-            </Helmet>
-            <h1>Guias Lineares → O que são e como especificars</h1>
+      <Helmet>
+        <title>Guias Lineares → O que são e como especificar</title>
+        <meta name="description" content="Engenharia Atual" />
+        <meta name="keywords" content="engenharia, engenharia atual, como ganhar dinheiro com a engenharia, engenharia século 21, engenharia moderna, sucesso na engenharia, consultoria em engenharia" />
+        <meta name="author" content="Vega Robotics" />
+      </Helmet>
+      <h1>Guias Lineares → O que são e como especificars</h1>
       <Slider {...settings}>
         {paragraphs.map((paragraph, index) => (
           <div key={index}>

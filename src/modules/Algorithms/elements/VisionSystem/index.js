@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
+// /* eslint-disable no-unused-vars */
 import React, { useRef, useState, useCallback, useMemo } from "react";
 // import ObjectDetectionResults from "./ObjectDetectionResults";
 import Webcam from "react-webcam";
@@ -10,14 +10,12 @@ import FileSaver from "file-saver";
 import pixelmatch from "pixelmatch";
 
 import { HelmetComponent } from "../../../../components/Helmet";
-import Mira from "./mira";
+// import Mira from "./mira";
 // import ObjectDetection from "../ObjectDetection";
 import Login from '../../../../components/Login/Login.js'
 // import Console from './console';
 import * as S from "./styles";
 import PlaygroundSpeedDial from "../../components/SpeedDial";
-import { ImageResultComponent } from "../../components/ImagesResultCompare/styles";
-import { ImagesResultCompare } from "../../components/ImagesResultCompare";
 import { AdsClick, Cameraswitch, Difference, Plagiarism, RocketLaunch, ScreenshotMonitor, WorkspacePremium } from "@mui/icons-material";
 import ModalComponent from "../../../../components/Modal";
 
@@ -205,42 +203,41 @@ function VisionSystem() {
     );
   }
 
-  const setImageClass = useCallback(
-    (diffPercentage, toleranceLevel) => {
-      let currentDateTime = new Date();
-      let currentDate = currentDateTime.toLocaleDateString();
-      let currentTime = currentDateTime.toLocaleTimeString();
+  // const setImageClass = useCallback(
+  //   (diffPercentage, toleranceLevel) => {
+  //     let currentDateTime = new Date();
+  //     let currentDate = currentDateTime.toLocaleDateString();
+  //     let currentTime = currentDateTime.toLocaleTimeString();
 
-      let message = "";
-      let status = "";
+  //     let message = "";
+  //     let status = "";
 
-      if (diffPercentage && diffPercentage <= toleranceLevel) {
-        setImageClassName("image-match");
-        message = "Aprovado";
-        status = "Approved";
-        setModalMessage(message);
-        setModal(true);
-      } else {
-        setImageClassName("image-mismatch");
-        setModal(true);
-        message = "Reprovado";
-        status = "Disapproved";
-        setModalMessage(message);
-      }
+  //     if (diffPercentage && diffPercentage <= toleranceLevel) {
+  //       setImageClassName("image-match");
+  //       message = "Aprovado";
+  //       status = "Approved";
+  //       setModalMessage(message);
+  //       setModal(true);
+  //     } else {
+  //       setImageClassName("image-mismatch");
+  //       setModal(true);
+  //       message = "Reprovado";
+  //       status = "Disapproved";
+  //       setModalMessage(message);
+  //     }
 
-      // Adicionar mensagem de aprovado/reprovado ao console
-      message += diffPercentage ? ` Images are ${diffPercentage.toFixed(2)}% different.` : " Images could not be compared.";
+  //     message += diffPercentage ? ` Images are ${diffPercentage.toFixed(2)}% different.` : " Images could not be compared.";
 
-      setConsoleData((prevState) => {
-        const newConsoleData = [
-          ...prevState,
-          { message, date: currentDate, time: currentTime, status },
-        ];
-        return newConsoleData.length > 10 ? newConsoleData.slice(1) : newConsoleData;
-      });
-    },
-    [setImageState]
-  );
+  //     setConsoleData((prevState) => {
+  //       const newConsoleData = [
+  //         ...prevState,
+  //         { message, date: currentDate, time: currentTime, status },
+  //       ];
+  //       return newConsoleData.length > 10 ? newConsoleData.slice(1) : newConsoleData;
+  //     });
+  //   },
+  //   [setImageState]
+  // );
 
   const handleOpen = () => setOpen(true);
 

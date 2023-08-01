@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import './styles.css';
 
@@ -6,7 +5,7 @@ const Loading = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     setTimeout(() => {
-      setIsLoading(false);
+        setIsLoading(false);
     }, 20000);
 
     return (
