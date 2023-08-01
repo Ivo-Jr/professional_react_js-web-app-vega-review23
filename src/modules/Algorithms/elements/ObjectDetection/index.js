@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
 import * as S from "./styles";
 import * as tf from '@tensorflow/tfjs';
@@ -8,6 +8,7 @@ import '@tensorflow/tfjs-backend-webgl';
 export const ObjectDetection = () => {
   const webcamRef = useRef();
   const canvasRef = useRef();
+  const [detectScrewsOnly, setDetectScrewsOnly] = useState(false);
 
   const loadModelAndDetectObjects = async () => {
     try {
@@ -23,7 +24,6 @@ export const ObjectDetection = () => {
     if (webcamRef.current && canvasRef.current) {
       const video = webcamRef.current.video;
 
-      // Verifique se o vídeo está pronto
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         const predictions = await model.detect(video);
         renderPredictions(predictions);
@@ -32,7 +32,6 @@ export const ObjectDetection = () => {
           detectObjects(model);
         });
       } else {
-        // Tente novamente se o vídeo ainda não estiver pronto
         setTimeout(() => {
           detectObjects(model);
         }, 50);
@@ -47,24 +46,26 @@ export const ObjectDetection = () => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     predictions.forEach((prediction) => {
-      const [x, y, width, height] = prediction['bbox'];
-      ctx.strokeStyle = 'rgba(0, 255, 0, 0.8)';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(x, y, width, height);
+      if (!detectScrewsOnly || prediction['class'] === 'scissors') { // Altere 'scissors' pela classe que você acredita ser a mais apropriada
+        const [x, y, width, height] = prediction['bbox'];
+        ctx.strokeStyle = 'rgba(0, 255, 0, 0.8)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x, y, width, height);
 
-      ctx.font = '18px Arial';
-      ctx.fillStyle = 'rgba(0, 255, 0, 0.8)';
-      const labelText = `${prediction['class']} ${(prediction['score'] * 100).toFixed(2)}%`;
-      ctx.fillText(labelText, x, y - 5);
+        ctx.font = '18px Arial';
+        ctx.fillStyle = 'rgba(0, 255, 0, 0.8)';
+        const labelText = `${prediction['class']} ${(prediction['score'] * 100).toFixed(2)}%`;
+        ctx.fillText(labelText, x, y - 5);
+      }
     });
   };
 
   useEffect(() => {
     loadModelAndDetectObjects();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [detectScrewsOnly]);
 
-  return (
+    return (
     <S.Container>
       <S.StyledTitle>Detecção de Objetos</S.StyledTitle>
       <S.VideoCanvasWrapper>
@@ -78,6 +79,15 @@ export const ObjectDetection = () => {
         />
         <S.StyledCanvas ref={canvasRef} />
       </S.VideoCanvasWrapper>
+      <S.SelectorWrapper>
+        <label>
+            Modo de Detecção:
+            <select onChange={e => setDetectScrewsOnly(e.target.value === 'screws')}>
+              <option value="all">Todos os Objetos</option>
+              <option value="screws">Somente Parafusos</option>
+            </select>
+          </label>
+      </S.SelectorWrapper>
     </S.Container>
   );
 }
