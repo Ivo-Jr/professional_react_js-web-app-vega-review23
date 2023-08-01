@@ -274,13 +274,16 @@ export const WebcamWrapper = styled.div`
     border-radius: 5px;
     border: 1px solid var(--color-gray);
 
-
     video {
       width: 100%;
       height: 100%;
   
       border-radius: 5px;
     }
+  }
+
+  canvas {
+    z-index: -1;
   }
 
   @media only screen and (min-width: 1830px) {
