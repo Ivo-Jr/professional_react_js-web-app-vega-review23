@@ -21,11 +21,14 @@ const responsiveStyles = `
 `;
 
 export const Container = styled.div`
+  display: flex;
+
   width: 100%;
+  min-height: calc(100% - 224px);
+  
   padding-top: 0px;
 
   background-color: var(--color-background);
-  ${responsiveStyles}
 `;
 
 export const Content = styled.main`
