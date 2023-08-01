@@ -1,4 +1,4 @@
-import { Button, CapturedImage, ImageResultComponent, Modal, ResultantImage, Title, WrapperTitle } from "./styles"
+import { CapturedImage, ImageResultComponent, ResultantImage, Title, WrapperTitle } from "./styles"
 
 export const ImagesResultCompare = ({ diffImage, imageClassName, diffPercentage, closeModal, toleranceLevel }) => {
   return (
@@ -37,7 +37,6 @@ export const ImagesResultCompare = ({ diffImage, imageClassName, diffPercentage,
               ? " Approved."
               : " Disapproved."}
           </p>
-          <Button onClick={closeModal}>Close</Button>
         </Modal>
       )} */}
     </ImageResultComponent>
