@@ -4,7 +4,6 @@ import * as S from './styles';
 
 import logo from '../../../assets/vega-header.svg';
 import logoMobile from "../../../assets/logo-mobile-VEGA.png";
-// import whatsapp from '../../assets/whatsapp.png';
 
 import { FiUser } from "react-icons/fi";
 import MenuListComposition from '../../Menu';
@@ -120,18 +119,12 @@ function Header() {
             <img src={whatsapp} alt="whatapp" />
           </a> */}
 
-          <a href="/">
+          <Link to="/algorithms/visionsystem">
             <FiUser />
             <span>
               Get in
             </span>
-          </a>
-
-          {/* <S.Hamburger onClick={toggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </S.Hamburger> */}
+          </Link>
         </S.RightSide>
 
       </S.Container>

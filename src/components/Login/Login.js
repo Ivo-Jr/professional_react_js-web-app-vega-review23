@@ -1,88 +1,17 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
-
-const Container = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  width: 100%;
-  min-height: 100%;
-  
-  margin: 0px;
-  padding: 19rem 0rem;
-
-  background: var(--color-white);
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
-
-  @media only screen and (min-width: 1900px){
-    width: 360px;
-    height: 335px;
-
-    h2 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    input {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      padding: 0.5rem 2rem;
-      height: 4rem;
-    }
-  }
-`;
-
-const Input = styled.input`
-  margin-bottom: 10px;
-  padding: 8px;
-  width: 100%;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
-
-  @media only screen and (min-width: 1900px){
-    padding: 1rem 4rem;
-    font-size: 2.5rem;
-    margin-top: 2rem;
-    border-radius: 5px;
-  }
-
-`;
-
-const Button = styled.button`
-  padding: 8px 16px;
-  background-color: #F55E34;
-  color: #ffffff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  &:hover {
-    background-color: #FFFFFF;
-    color: black;
-  }
-
-  @media only screen and (min-width: 1900px){
-    padding: 1rem 4rem;
-    font-size: 2.1rem;
-    margin-top: 2rem;
-    border-radius: 5px;
-  }
-
-`;
+import logoVega from "../../assets/logoVega.svg";
+import { AccountCircle, Lock, Visibility, VisibilityOff } from '@mui/icons-material';
+import { Container, LeftSide, WelcomeText, Form, Button } from './styles';
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
 
 const Login = ({ onLogin, credentials }) => {
   const [client, setClient] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -102,25 +31,113 @@ const Login = ({ onLogin, credentials }) => {
 
   return (
     <Container>
+      <LeftSide>
+        <img src={logoVega} alt="logo-vegarobotics" />
+        <WelcomeText>
+          Faça seu Login <br />
+          na plataforma
+        </WelcomeText>
+      </LeftSide>
       <Form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <Input
-          type="string"
-          placeholder="Cliente"
-          value={client}
-          onChange={(e) => setClient(e.target.value)}
-          required
-        />
-        <Input
-          type="password"
-          placeholder="Senha do Projeto"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <Button type="submit">Entrar</Button>
+        <FormControl sx={{
+          m: 1, width: '100%',
+          "@media (min-width: 1900px)": {
+            marginBottom: "2rem"
+          },
+          "& .MuiInputBase-root": {
+            fontSize: "1.6rem",
+            "@media (min-width: 1900px)": {
+              fontSize: "2rem"
+            }
+          },
+          "& .MuiFormLabel-root": {
+            fontSize: "1.6rem",
+            "@media (min-width: 1900px)": {
+              fontSize: "2rem"
+            }
+          },
+          "& .MuiSvgIcon-root": {
+            width: "2rem", height: "2rem",
+            "@media (min-width: 1900px)": {
+              width: "2.5rem", height: "2.5rem"
+            }
+          },
+          "& .MuiButtonBase-root": { width: "3rem" },
+          "&. MuiInputBase-input": { height: "3.5rem" }
+        }}
+          variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-login">Login</InputLabel>
+          <OutlinedInput
+            onChange={(e) => setClient(e.target.value)}
+            startAdornment={
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            }
+            id="outlined-adornment-login"
+            type="text"
+            label="Login"
+          />
+        </FormControl>
+
+        <FormControl sx={{
+          m: 1, width: '100%',
+          "@media (min-width: 1900px)": {
+            marginBottom: "2rem"
+          },
+          "& .MuiInputBase-root": {
+            fontSize: "1.6rem",
+            "@media (min-width: 1900px)": {
+              fontSize: "2rem"
+            }
+          },
+          "& .MuiFormLabel-root": {
+            fontSize: "1.6rem",
+            "@media (min-width: 1900px)": {
+              fontSize: "2rem"
+            }
+          },
+          "& .MuiSvgIcon-root": {
+            width: "2rem", height: "2rem",
+            "@media (min-width: 1900px)": {
+              width: "2.5rem", height: "2.5rem"
+            }
+          },
+          "& .MuiButtonBase-root": { width: "3rem" }
+        }}
+          variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            onChange={(e) => setPassword(e.target.value)}
+            startAdornment={
+              <InputAdornment position="start">
+                <Lock />
+              </InputAdornment>
+            }
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                  sx={{ width: "2rem", hegiht: "2rem" }}
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
+
+        <Button className="login-button" type="submit">
+          Entrar
+        </Button>
       </Form>
-    </Container>
+    </Container >
   );
 };
 
