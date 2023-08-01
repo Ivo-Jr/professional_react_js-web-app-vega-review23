@@ -131,10 +131,11 @@ export const Button = styled.button`
   line-height: 19px;
 
   background: var(--color-wine);
+  transition: .2s ease-in-out;
+
   cursor: pointer;
 
   &:hover {
-    background-color: #FFFFFF;
-    color: black;
+    opacity: .8
   }
 `;
