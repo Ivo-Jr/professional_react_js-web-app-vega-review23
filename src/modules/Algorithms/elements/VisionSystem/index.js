@@ -46,13 +46,6 @@ function VisionSystem() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [objectDetectionResults, setObjectDetectionResults] = useState([]);
   const [open, setOpen] = useState(false);
-  const [storageImage, setStorageImage] = useState(() => {
-    const storage = localStorage.getItem("webcamImage");
-
-    if (storage) {
-      return storage
-    }
-  });
 
   const credentials = {
     client: "VIXEM",
@@ -357,6 +350,14 @@ function VisionSystem() {
     handleNewVerification
   ]);
 
+  const storageImage = useMemo(() => {
+    const storage = localStorage.getItem("webcamImage");
+
+    if (storage) {
+      return storage
+    }
+  }, [handleImageCapture]);
+
   const videoConstraints = {
     width: window.innerWidth,
     // height: window.innerHeight,
@@ -437,7 +438,7 @@ function VisionSystem() {
                                 <S.Title>Captured Image</S.Title>
                               </S.WrapperTitle>
                               <img
-                                src={localStorage.getItem("webcamImage")}
+                                src={storageImage}
                                 alt="Captured-Webcam-Image"
                               />
                             </S.CapturedImage>
@@ -574,11 +575,11 @@ function VisionSystem() {
                   <>
                     <S.CapturedImage>
                       <S.WrapperTitle>
-                        <S.Title>Captured Image</S.Title>
+                        <S.Title>Captured Image2</S.Title>
                       </S.WrapperTitle>
                       {/* <p>Stored image for comparison.</p> */}
                       <img
-                        src={localStorage.getItem("webcamImage")}
+                        src={storageImage}
                         alt="Captured-Webcam-Image"
                       />
                     </S.CapturedImage>
