@@ -138,7 +138,7 @@ export const WhatsApp = styled.a`
   animation: ${fadeIn} 1s ease forwards;
   animation-delay: 1.3s;
 
-  z-index: 9999 !important;
+  z-index: 999;
   box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.3);
 
   img{

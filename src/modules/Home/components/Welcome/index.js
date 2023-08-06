@@ -40,11 +40,11 @@ export const Welcome = () => {
           Eu quero conhecer
           <FiArrowUpRight color="#fff" />
         </CTAButton>
-
-        <WhatsApp href="https://wa.me/+551151998949" target="_blank" rel="noreferrer">
-          <img src={whatsApp} alt="logo-whatsapp" />
-        </WhatsApp>
       </Content>
+
+      <WhatsApp href="https://wa.me/+551151998949" target="_blank" rel="noreferrer">
+        <img src={whatsApp} alt="logo-whatsapp" />
+      </WhatsApp>
     </Container>
   )
 }
