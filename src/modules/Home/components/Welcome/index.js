@@ -29,11 +29,11 @@ export const Welcome = () => {
     <Container id="home">
       <Content imgprops={planetImg}>
         <Title>
-          Impulsione sua Competitividade com a Vega Robotics
+          Engenharia Inteligente para uma Produção Eficiente
         </Title>
 
         <SubTitle>
-          Revolucionamos a sua jornada para a Indústria 4.0. Com soluções de automação, digitalização, Internet das Coisas, Computação em Nuvem e Inteligência Artificial, remodelamos seus processos existentes para reduzir custos, eliminar desperdícios e levar sua empresa a novos patamares de eficiência.
+        Na Vega Robotics, aplicamos visão computacional avançada e consultoria personalizada para otimizar a eficiência industrial. Nossas soluções inovadoras transformam operações, reduzem falhas e elevam sua empresa à vanguarda da indústria brasileira. Descubra um futuro mais produtivo e seguro conosco.
         </SubTitle>
 
         <CTAButton onClick={handleCTAClick}>
