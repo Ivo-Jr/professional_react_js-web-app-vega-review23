@@ -271,9 +271,11 @@ export const SideRight = styled.aside`
   align-items: center;
 
   width: 100%;
-  
+
+  padding: 20px;
+
   img {
     width: 100%;
-    /* max-width: 515px; */
   }
 `;
+

@@ -2,6 +2,7 @@ import React from 'react';
 
 // import technologyImage from '../../../../../assets/techonology.jpg';
 // import technologyImage from '../assets/VG422_2235483_41.png';
+import Skeleton from '@mui/material/Skeleton';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 import {
@@ -16,7 +17,7 @@ import {
   PersonInfo,
   Name,
   Occupation,
-  SideRight
+  SideRight,
 } from './styles';
 import { Link } from 'react-router-dom';
 
@@ -55,7 +56,16 @@ export const Panel = ({
 
         <Person>
           <Avatar color={color}>
-            <img src={avatar} alt="avatar-person" />
+            {avatar ?
+              <img src={avatar} alt="avatar-person" />
+              :
+              <Skeleton variant="circular" sx={{
+                bgcolor: 'grey.900'
+              }}>
+                <img src={avatar} alt="avatar-person" />
+              </Skeleton>
+
+            }
           </Avatar>
           <PersonInfo>
             <Name>
@@ -70,8 +80,18 @@ export const Panel = ({
       </SideLeft>
 
       <SideRight>
-    <img src={image} alt="imagem-tecnologia" />
-  </SideRight>
+        {image ?
+          <img src={image} alt="imagem-tecnologia" />
+          :
+          <Skeleton variant="rectangular"
+            sx={{
+              bgcolor: 'grey.900'
+            }}
+          >
+            <img src={image} alt="imagem-tecnologia" />
+          </Skeleton>
+        }
+      </SideRight>
     </Container>
   )
 }
