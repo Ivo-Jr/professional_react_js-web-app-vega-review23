@@ -23,6 +23,7 @@ import { LinearGuides } from "../modules/Article/elements/LinearGuides";
 import { PPF } from "../modules/Article/elements/PPF";
 import { Budget } from "../modules/Budget";
 import { Quiz } from "../modules/Forms";
+import CircularIndeterminate from '../components/Loading';
 
 const GrossWeight = lazy(() => import('../modules/Algorithms/elements/GrossWeight'));
 const CuttingForce = lazy(() => import('../modules/Algorithms/elements/CuttingForce'));
@@ -32,43 +33,36 @@ export const AppRoutes = () => {
   const { loading } = useContext(LoadingContext);
 
   return (
-    <Suspense fallback={<Loading />}>
-      {loading ? <Loading /> : (
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/technology" element={<Technology />} />
-            <Route path="/engineering" element={<Engineering />} />
+    <Suspense fallback={<CircularIndeterminate />}>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/technology" element={<Technology />} />
+          <Route path="/engineering" element={<Engineering />} />
 
-            <Route path="algorithms" element={<Algorithms />} />
-            <Route path="algorithms/grossweight" element={<GrossWeight />} />
-            <Route path="algorithms/cuttingforce" element={<CuttingForce />} />
-            <Route path="algorithms/bendingforce" element={<BendingForce />} />
-            <Route path="algorithms/energyConsumption" element={<EnergyConsumption />} />
-            <Route path="algorithms/vixem" element={
-              <Suspense fallback={<Loading />}>
-                <MPFaceMesh />
-              </Suspense>
-            } />
-            <Route path="algorithms/visionsystem" element={<VisionSystem />} />
-            <Route path="algorithms/objectdetection" element={<ObjectDetection />} />
-            <Route path="algorithms/vme" element={<VME />} />
-            <Route path="algorithms/riskprioritization" element={<RiskPrioritization />} />
-            <Route path="algorithms/screencaptureanddisplay" element={<ScreenCaptureAndDisplay />} />
+          <Route path="algorithms" element={<Algorithms />} />
+          <Route path="algorithms/grossweight" element={<GrossWeight />} />
+          <Route path="algorithms/cuttingforce" element={<CuttingForce />} />
+          <Route path="algorithms/bendingforce" element={<BendingForce />} />
+          <Route path="algorithms/energyConsumption" element={<EnergyConsumption />} />
+          <Route path="algorithms/vixem" element={<MPFaceMesh />} />
+          <Route path="algorithms/visionsystem" element={<VisionSystem />} />
+          <Route path="algorithms/objectdetection" element={<ObjectDetection />} />
+          <Route path="algorithms/vme" element={<VME />} />
+          <Route path="algorithms/riskprioritization" element={<RiskPrioritization />} />
+          <Route path="algorithms/screencaptureanddisplay" element={<ScreenCaptureAndDisplay />} />
 
-            <Route path="articles" element={<Article />} />
-            <Route path="articles/bestpractices" element={<BestPracticesInProjects />} />
-            <Route path="articles/grabcad" element={<GrabCad />} />
-            <Route path="articles/linearguides" element={<LinearGuides />} />
-            <Route path="articles/ppf" element={<PPF />} />
+          <Route path="articles" element={<Article />} />
+          <Route path="articles/bestpractices" element={<BestPracticesInProjects />} />
+          <Route path="articles/grabcad" element={<GrabCad />} />
+          <Route path="articles/linearguides" element={<LinearGuides />} />
+          <Route path="articles/ppf" element={<PPF />} />
 
-            <Route path="budget" element={<Budget />} />
+          <Route path="budget" element={<Budget />} />
 
-            <Route path="forms" element={<Quiz />} />
-            <Route path="manutention" element={<Manutention />} />
-          </Route>
-        </Routes>
-      )}
+          <Route path="forms" element={<Quiz />} />
+        </Route>
+      </Routes >
     </Suspense>
   );
 };
