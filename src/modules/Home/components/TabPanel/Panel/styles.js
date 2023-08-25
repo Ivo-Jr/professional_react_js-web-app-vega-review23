@@ -274,6 +274,13 @@ export const SideRight = styled.aside`
 
   padding: 20px;
 
+  span {
+    border-radius: 10px;
+    min-height: calc(28vw + 19rem);
+    width: 100%;
+    height: 100%,
+  }
+
   img {
     width: 100%;
   }

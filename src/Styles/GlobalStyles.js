@@ -27,10 +27,25 @@ export default createGlobalStyle`
     scroll-behavior: smooth;
     height: 100%;
     background-color: var(--color-background);
+
+  ::-webkit-scrollbar {
+      width: 6px;
+      z-index: 999999 !important;
+      background: transparent
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #939494;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent
+    }
   }
   
-/* 
-  ::-webkit-scrollbar {width: 0! important}
+
+  /* ::-webkit-scrollbar {width: 0! important}
     body {
       background-color: #161a1e;
     } */

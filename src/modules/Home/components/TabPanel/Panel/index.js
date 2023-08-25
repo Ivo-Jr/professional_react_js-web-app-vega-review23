@@ -90,16 +90,7 @@ export const Panel = ({ data }) => {
         {isImageLoaded ?
           <img src={data.image} alt="imagem-tecnologia" />
           :
-          <Skeleton variant="rectangular"
-            sx={{
-              minWidth: '380px',
-              minHeight: '480px',
-              width: '100%',
-              height: '100%',
-              bgcolor: 'grey.900'
-            }}
-          >
-          </Skeleton>
+          <Skeleton variant="rectangular" sx={{ bgcolor: 'grey.900' }} />
         }
       </SideRight>
     </Container>
