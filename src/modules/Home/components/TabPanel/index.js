@@ -70,30 +70,12 @@ export const TabPanel = () => {
           <Wrapper activetab={activeTab}>
             {activeTab === 0 &&
               <Panel
-                subtitle={tabView[activeTab].subtitle}
-                description={tabView[activeTab].description}
-                ctaButtonText={tabView[activeTab].ctaButtonText}
-                testimony={tabView[activeTab].testimony}
-                avatar={tabView[activeTab].avatar}
-                name={tabView[activeTab].name}
-                occupation={tabView[activeTab].occupation}
-                color={tabView[activeTab].color}
-                url={tabView[activeTab].url}
-                image={tabView[activeTab].image}
+                data={tabView[activeTab]}
               />
             }
             {activeTab === 1 &&
               <Panel
-                subtitle={tabView[activeTab].subtitle}
-                description={tabView[activeTab].description}
-                ctaButtonText={tabView[activeTab].ctaButtonText}
-                testimony={tabView[activeTab].testimony}
-                avatar={tabView[activeTab].avatar}
-                name={tabView[activeTab].name}
-                occupation={tabView[activeTab].occupation}
-                color={tabView[activeTab].color}
-                url={tabView[activeTab].url}
-                image={tabView[activeTab].image}
+                data={tabView[activeTab]}
               />
             }
           </Wrapper>
