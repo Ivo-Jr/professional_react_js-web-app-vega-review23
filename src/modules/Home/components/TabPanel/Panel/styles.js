@@ -278,7 +278,15 @@ export const SideRight = styled.aside`
     border-radius: 10px;
     min-height: calc(28vw + 19rem);
     width: 100%;
-    height: 100%,
+    height: 100%;
+    
+    @media (min-width: 900px) and (max-width: 1344px) {
+      min-width: 35vw
+    }
+
+    @media (min-width: 1345px) {
+      min-width: calc(26vw + 5rem);
+    }
   }
 
   img {
