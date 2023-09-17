@@ -464,19 +464,19 @@
                           </S.InnerRight>
                           <ObjectDetectionResults predictions={predictions} />
                           {sourceType === 'webcam' ? (
-    <Webcam
-      ref={webcamRef}
-      mirrored={facingMode === 'user'}
-      videoConstraints={videoConstraints}
-    />
-  ) : (
-    <video controls width={window.innerWidth} height={window.innerHeight}>
-      <source src={ipCameraUrl} type="video/mp4" /> 
-      {/* Ajuste o tipo conforme necessário. */}
-      Your browser does not support the video tag.
-    </video>
-    // Nota: você precisará ajustar o path e talvez o tipo de vídeo de acordo com o seu setup.
-  )}
+                            <Webcam
+                              ref={webcamRef}
+                              mirrored={facingMode === 'user'}
+                              videoConstraints={videoConstraints}
+                            />
+                          ) : (
+                            <video controls width={window.innerWidth} height={window.innerHeight}>
+                              <source src={ipCameraUrl} type="video/mp4" /> 
+                              {/* Ajuste o tipo conforme necessário. */}
+                              Your browser does not support the video tag.
+                            </video>
+                            // Nota: você precisará ajustar o path e talvez o tipo de vídeo de acordo com o seu setup.
+                          )}
                         </section>
                         {/* <Mira width={320} height={240} /> */}
                         <ObjectDetectionToggle
