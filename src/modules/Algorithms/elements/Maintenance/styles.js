@@ -26,11 +26,51 @@ export const FormTemp = styled.div`
     .sectionInput {
         display: flex;
         flex-direction: column;
+        margin: 1rem 0rem;
+        width: 50%
+
     }
 
+    padding: 2rem;
+
     input {
-        width: 50%
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        border-radius: 5px;
     }
+
+    label {
+        font-size: 2rem;
+
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+
+        margin: 5rem 0px 0px 0px;
+        padding: 1rem 2rem;
+        
+        text-decoration: none;
+        text-align: center;
+        
+        color: var(--color-white);
+        background: var( --color-wine);
+        
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 19px;
+        
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+        
+        &:hover {
+            filter: brightness(.8);
+        }
+    }
+
 `;
 
 export const Calc = styled.div`
